@@ -23,7 +23,7 @@ from typing import Any, List
 
 from robotlibcore import DynamicCore  # type: ignore
 
-from .keywords import GeventKeywords
+from .keywords import KW_MAPPING, GeventKeywords
 
 
 class GeventLibrary(DynamicCore):
@@ -33,6 +33,14 @@ class GeventLibrary(DynamicCore):
     """
 
     libraries: List[Any] = [GeventKeywords()]
+    ROBOT_LIBRARY_SCOPE = "TEST SUITE"
+    ROBOT_LISTENER_API_VERSION = 3
 
     def __init__(self):
+        self.ROBOT_LIBRARY_LISTENER = self
         DynamicCore.__init__(self, GeventLibrary.libraries)
+
+    def start_keyword(self, name, attrs):
+        if name.lower() in KW_MAPPING:
+            new_kw = KW_MAPPING[name.lower()]
+            print(f"replace {name} with {new_kw}")
