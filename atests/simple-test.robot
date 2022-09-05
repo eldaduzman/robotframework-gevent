@@ -1,7 +1,8 @@
 *** Settings ***
-Documentation       Hi
+Documentation       A simple test with gevent library
+...                 Initialize the library, create a session, add keywords as coroutines and execute the coroutines.
 Library    String
-Library             GeventLibrary.GeventLibrary
+Library             GeventLibrary
 
 
 *** Test Cases ***
