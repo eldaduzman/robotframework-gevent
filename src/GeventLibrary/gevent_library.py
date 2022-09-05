@@ -23,16 +23,42 @@ from typing import Any, List
 
 from robotlibcore import DynamicCore  # type: ignore
 
-from .keywords import GeventKeywords
+from .keywords import KW_MAPPING, GeventKeywords
 
 
 class GeventLibrary(DynamicCore):
     """
-    Gevent library enables testers to run a bundle of keywords as coroutines.
+    *GeventLibrary* library enables robotframework developers to run a bundle of keywords as coroutines.
     Each keywords gets its own greenlet so that they are executed to completion.
+
+    Gevent acts as both a library with designated keywords, and also as a listener, which hooks to the keywords executed in the robot script
+
+    TODO: keywords listener needs to replace the keywords with their gevent compliant counterparts.
+    ```
+    *** Settings ***
+    Library             GeventLibrary
+
+
+    *** Test Cases ***
+    Test1
+        Log    Hello World
+        Create Session    alias=alias1
+        Add Coroutine    Sleep    1s    alias=alias1
+        Add Coroutine    Sleep    1s    alias=alias1
+        ${values}    Run Coroutines    alias=alias1
+        Log Many    @{values}
+    ```
     """
 
     libraries: List[Any] = [GeventKeywords()]
+    ROBOT_LIBRARY_SCOPE = "TEST SUITE"
+    ROBOT_LISTENER_API_VERSION = 3
 
     def __init__(self):
+        self.ROBOT_LIBRARY_LISTENER = self
         DynamicCore.__init__(self, GeventLibrary.libraries)
+
+    def start_keyword(self, name, _):
+        if name.lower() in KW_MAPPING:
+            new_kw = KW_MAPPING[name.lower()]
+            print(f"replace {name} with {new_kw}")
