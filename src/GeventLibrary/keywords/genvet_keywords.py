@@ -63,13 +63,13 @@ class GeventKeywords:
         return sessions_coros
 
     @keyword
-    def create_session(self, alias: str = None):
+    def create_gevent_bundle(self, alias: str = None):
         """this methods creates a session for coroutines to run, once the session is created you can attach keywords to it
         these keywords will be executed asynchronously when `Run Coroutines` is called
         Examples:
 
-        |     Create Session
-        |     Create Session    alias=alias1
+        |     Create Gevent Bundle
+        |     Create Gevent Bundle    alias=alias1
 
         Args:
             alias (str, optional): Name of alias. Defaults to None.
@@ -120,4 +120,4 @@ class GeventKeywords:
 
         _ = joinall(jobs, timeout=200)
         sessions_coros.clear()
-        return ([job.value for job in jobs],)
+        return [job.value for job in jobs]
