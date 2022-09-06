@@ -15,8 +15,7 @@ Run keywords asynchronously with the power of gevent
 ```
 # simple-test.robot
 *** Settings ***
-Documentation       A simple test with gevent library
-...                 Initialize the library, create a session, add keywords as coroutines and execute the coroutines.
+
 Library    String
 Library             GeventLibrary
 
@@ -26,7 +25,8 @@ Test1
     Log    Hello World
     Create Session    alias=alias1
     Add Coroutine    Sleep Wrapper    alias=alias1
-    Add Coroutine    Sleep    1s    alias=alias1
+    Add Coroutine    Sleep    20s    alias=alias1
+    Add Coroutine    Sleep    10s    alias=alias1
     Add Coroutine    Convert To Lower Case    UPPER
     ${values}    Run Coroutines    alias=alias1
     Log Many    @{values}
@@ -41,10 +41,12 @@ Sleep Wrapper
 ```
 ## Motivation
 
-In the modern world, software architecture is no longer the old server-client, but an event driven architecture where event happen simultaneously.
-To test such a system we need the ability to run coroutines in our test scripts.
+Modern software architecture is `event driven`, with many background process.
+Servers are being more pro-active instead of re-active as we see in a `client server` architecture.
 
-With the power of gevent, we can run several coroutines in greenlets, so integrating them into our robotframework test script will provide super powers to our testing efforts!
+In order to test such systems, we need the ability to run coroutines in our test scripts.
+
+With the power of [gevent](http://www.gevent.org/), we can run several coroutines in greenlets, so integrating them into our robotframework test script will provide super powers to our testing efforts!
 
 ## File structure
 ```
