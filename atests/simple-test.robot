@@ -1,7 +1,8 @@
 *** Settings ***
 Documentation       A simple test with gevent library
-...                 Initialize the library, create a session, add keywords as coroutines and execute the coroutines.
+...                 Initialize the library, creates a bundle, add keywords as coroutines and execute the coroutines.
 
+Library             Collections
 Library             String
 Library             GeventLibrary
 Library             RequestsLibrary
@@ -18,9 +19,12 @@ Test1
     Add Coroutine    Sleep    10s    alias=alias1
     Add Coroutine    GET    https://jsonplaceholder.typicode.com/posts/1    alias=alias1
     Add Coroutine    Convert To Lower Case    UPPER
+    Add Coroutine    Convert To Integer    1
     ${values}    Run Coroutines    alias=alias1
     Log Many    @{values}
-    Should Be Equal As Strings    1    ${values[3].json()['userId']}
+    ${jsonplaceholder_resp}    Get From List    ${values}    3
+    Status Should Be    200    ${jsonplaceholder_resp}
+    Should Be Equal As Strings    1    ${jsonplaceholder_resp.json()['userId']}
 
 
 *** Keywords ***
