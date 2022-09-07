@@ -1,7 +1,10 @@
 # robotframework-gevent
 Run keywords asynchronously with the power of gevent
 
+![stable](https://img.shields.io/static/v1?label=version&message=0.1.a&color=red)
 ![stable](https://img.shields.io/static/v1?label=status&message=alpha&color=red)
+![stable](https://img.shields.io/static/v1?label=codecov&message=100%&color=greene)
+![stable](https://img.shields.io/static/v1?label=mutant-score&message=0.65&color=orange)
 
 
 
@@ -124,3 +127,4 @@ Concurrency can be achieved in 3 different ways:
 ## links
 1. [Robotframework](https://robotframework.org/)
 2. [gevent](http://www.gevent.org/)
+3. [Mutation testing with cosmic-ray](https://python.plainenglish.io/python-mutation-testing-with-cosmic-ray-4b78eb9e0676)

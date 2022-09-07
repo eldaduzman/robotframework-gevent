@@ -26,6 +26,8 @@ pylint = "^2.15.0"
 black = "^22.8.0"
 perflint = "^0.7.3"
 robotframework-requests = "^0.9.3"
+coverage = "^6.4.4"
+cosmic-ray = "^8.3.5"
 
 
 [build-system]

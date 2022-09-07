@@ -1,0 +1,1886 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" /><title>Cosmic Ray Report</title></head><body><div class="container"><h1><p class="text-dark">Cosmic Ray Report</p></h1></div><div class="container"><div class="mb-1" id="summary_info___accordion"><div class="card"><a data-toggle="collapse" data-target="#summary_info___collapse_1" aria-expanded="true" aria-controls="summary_info___collapse_1" href="#"><div class="card-header" id="summary_info___heading_1"><button class="btn btn-outline-dark"><h4 class="m-0">Summary info</h4></button></div></a><div aria-labelledby="summary_info___heading_1" data-parent="#summary_info___accordion" class="collapse show" id="summary_info___collapse_1"><div class="card-body"><p>Date time: 07/09/2022 19:33:40</p><p>Total jobs: 42</p><p>Complete: 42 (100.00%)</p><p>Surviving mutants: 15 (35.71%)</p></div></div></div></div><div class="mb-1" id="job_list___accordion"><div class="card"><a data-toggle="collapse" data-target="#job_list___collapse_1" aria-expanded="false" aria-controls="job_list___collapse_1" href="#"><div class="card-header" id="job_list___heading_1"><button class="btn btn-outline-dark"><h4 class="m-0">Job list</h4></button></div></a><div aria-labelledby="job_list___heading_1" data-parent="#job_list___accordion" class="collapse" id="job_list___collapse_1"><div class="card-body"><div class="text-right mb-1"><div class="mx-1" id="job_item_expand_all"><a href="#" onclick="$('div.job_list___sub_multi_collapse').collapse('show');"><button class="btn btn-outline-dark"><span>Expand All</span></button></a></div><div class="mx-1" id="job_item_collapse_all"><a href="#" onclick="$('div.job_list___sub_multi_collapse').collapse('hide');"><button class="btn btn-outline-dark"><span>Collapse All</span></button></a></div></div><div class="mb-1" id="job_list___sub_accordion_1"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_1_1" aria-expanded="false" aria-controls="job_list___sub_collapse_1_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_1_1"><button class="btn btn-outline-success"><span class="job_id">1 : Job ID 25c55229e0074b3f82a91822a295a5b6</span></button></div></a><div aria-labelledby="job_list___sub_heading_1_1" data-parent="#job_list___sub_accordion_1" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_1_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=102" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (102, 22), end pos: (102, 24)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Eq_NotEq, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -99,7 +99,7 @@
+             list: all returned values from coroutines by order
+         """
+         coros = self[alias]
+-        if len(coros) == 0:
++        if len(coros) != 0:
+             raise BundleHasNoCoroutines(
+                 "The given bundle has no coroutines, please use `Add Coroutine` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">..E.....EF
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 106, in test_bundle_is_empty_after_execution
+    gevent_library_instance.run_coroutines()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 103, in run_coroutines
+    raise BundleHasNoCoroutines(
+GeventLibrary.exceptions.BundleHasNoCoroutines: The given bundle has no coroutines, please use `Add Coroutine` keyword
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 120, in test_order_of_returned_values
+    values = gevent_library_instance.run_coroutines()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 103, in run_coroutines
+    raise BundleHasNoCoroutines(
+GeventLibrary.exceptions.BundleHasNoCoroutines: The given bundle has no coroutines, please use `Add Coroutine` keyword
+
+======================================================================
+FAIL: test_run_empty_coroutine_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we run a bundle of coroutines,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 85, in test_run_empty_coroutine_bundle
+    with self.assertRaises(BundleHasNoCoroutines) as exp:
+AssertionError: BundleHasNoCoroutines not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.084s
+
+FAILED (failures=1, errors=2)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_2"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_2_1" aria-expanded="false" aria-controls="job_list___sub_collapse_2_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_2_1"><button class="btn btn-outline-success"><span class="job_id">2 : Job ID 72e4a3839ad84e308e03a55a4ef48f4e</span></button></div></a><div aria-labelledby="job_list___sub_heading_2_1" data-parent="#job_list___sub_accordion_2" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_2_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=128" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (128, 44), end pos: (128, 46)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Eq_NotEq, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -125,7 +125,7 @@
+         return len(self._active_gevent_bundles)
+ 
+     def __getitem__(self, alias: Optional[str] = None) -&gt; List[RobotKeywordCoroutine]:
+-        if len(self._active_gevent_bundles) == 0:
++        if len(self._active_gevent_bundles) != 0:
+             raise NoBundleCreated(
+                 "Please create a bundle with `Create Gevent Bundle` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">EEEE.EE.EE
+======================================================================
+ERROR: test_add_coroutine_before_session (utests.test_bundle_creation.TestInstanceCreation)
+When we create a new bundle with a name that already exists,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 75, in test_add_coroutine_before_session
+    gevent_library_instance.add_coroutine("Name")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[-1][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_bundle_does_not_exist (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 130, in test_bundle_does_not_exist
+    gevent_library_instance.add_coroutine(
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 101, in test_bundle_is_empty_after_execution
+    gevent_library_instance.add_coroutine("Log", "Hello World1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 48, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.add_coroutine("Name1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_empty_bundle_with_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 28, in test_create_empty_bundle_with_alias
+    coros = gevent_library_instance["my_alias"]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_empty_bundle_without_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 38, in test_create_empty_bundle_without_alias
+    coros = gevent_library_instance[None]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 118, in test_order_of_returned_values
+    gevent_library_instance.add_coroutine("Convert To Integer", "1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_run_empty_coroutine_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we run a bundle of coroutines,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 88, in test_run_empty_coroutine_bundle
+    gevent_library_instance.run_coroutines("my_alias")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 101, in run_coroutines
+    coros = self[alias]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.015s
+
+FAILED (errors=8)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_3"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_3_1" aria-expanded="false" aria-controls="job_list___sub_collapse_3_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_3_1"><button class="btn btn-outline-success"><span class="job_id">3 : Job ID a74dc4ffcc6149aa8708a893689a843a</span></button></div></a><div aria-labelledby="job_list___sub_heading_3_1" data-parent="#job_list___sub_accordion_3" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_3_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=102" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (102, 22), end pos: (102, 24)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Eq_Lt, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -99,7 +99,7 @@
+             list: all returned values from coroutines by order
+         """
+         coros = self[alias]
+-        if len(coros) == 0:
++        if len(coros) &lt; 0:
+             raise BundleHasNoCoroutines(
+                 "The given bundle has no coroutines, please use `Add Coroutine` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">.........F
+======================================================================
+FAIL: test_run_empty_coroutine_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we run a bundle of coroutines,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 85, in test_run_empty_coroutine_bundle
+    with self.assertRaises(BundleHasNoCoroutines) as exp:
+AssertionError: BundleHasNoCoroutines not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.103s
+
+FAILED (failures=1)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_4"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_4_1" aria-expanded="false" aria-controls="job_list___sub_collapse_4_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_4_1"><button class="btn btn-outline-success"><span class="job_id">4 : Job ID 447739310e73468a81e81b444ef857c4</span></button></div></a><div aria-labelledby="job_list___sub_heading_4_1" data-parent="#job_list___sub_accordion_4" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_4_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=128" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (128, 44), end pos: (128, 46)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Eq_Lt, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -125,7 +125,7 @@
+         return len(self._active_gevent_bundles)
+ 
+     def __getitem__(self, alias: Optional[str] = None) -&gt; List[RobotKeywordCoroutine]:
+-        if len(self._active_gevent_bundles) == 0:
++        if len(self._active_gevent_bundles) &lt; 0:
+             raise NoBundleCreated(
+                 "Please create a bundle with `Create Gevent Bundle` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">E.........
+======================================================================
+ERROR: test_add_coroutine_before_session (utests.test_bundle_creation.TestInstanceCreation)
+When we create a new bundle with a name that already exists,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 75, in test_add_coroutine_before_session
+    gevent_library_instance.add_coroutine("Name")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[-1][1]
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.109s
+
+FAILED (errors=1)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_5"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_5_1" aria-expanded="false" aria-controls="job_list___sub_collapse_5_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_5_1"><button class="btn btn-outline-danger"><span class="job_id">5 : Job ID 45c503851d224f48a228959f280107d7</span></button></div></a><div aria-labelledby="job_list___sub_heading_5_1" data-parent="#job_list___sub_accordion_5" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_5_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=102" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (102, 22), end pos: (102, 24)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Eq_LtE, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -99,7 +99,7 @@
+             list: all returned values from coroutines by order
+         """
+         coros = self[alias]
+-        if len(coros) == 0:
++        if len(coros) &lt;= 0:
+             raise BundleHasNoCoroutines(
+                 "The given bundle has no coroutines, please use `Add Coroutine` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.066s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_6"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_6_1" aria-expanded="false" aria-controls="job_list___sub_collapse_6_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_6_1"><button class="btn btn-outline-danger"><span class="job_id">6 : Job ID 37d7ba8eba314ec8aa015a659be9c6fe</span></button></div></a><div aria-labelledby="job_list___sub_heading_6_1" data-parent="#job_list___sub_accordion_6" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_6_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=128" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (128, 44), end pos: (128, 46)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Eq_LtE, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -125,7 +125,7 @@
+         return len(self._active_gevent_bundles)
+ 
+     def __getitem__(self, alias: Optional[str] = None) -&gt; List[RobotKeywordCoroutine]:
+-        if len(self._active_gevent_bundles) == 0:
++        if len(self._active_gevent_bundles) &lt;= 0:
+             raise NoBundleCreated(
+                 "Please create a bundle with `Create Gevent Bundle` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.132s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_7"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_7_1" aria-expanded="false" aria-controls="job_list___sub_collapse_7_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_7_1"><button class="btn btn-outline-success"><span class="job_id">7 : Job ID c8304083af19436c9c0dd5fe44b19818</span></button></div></a><div aria-labelledby="job_list___sub_heading_7_1" data-parent="#job_list___sub_accordion_7" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_7_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=102" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (102, 22), end pos: (102, 24)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Eq_Gt, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -99,7 +99,7 @@
+             list: all returned values from coroutines by order
+         """
+         coros = self[alias]
+-        if len(coros) == 0:
++        if len(coros) &gt; 0:
+             raise BundleHasNoCoroutines(
+                 "The given bundle has no coroutines, please use `Add Coroutine` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">..E.....EF
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 106, in test_bundle_is_empty_after_execution
+    gevent_library_instance.run_coroutines()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 103, in run_coroutines
+    raise BundleHasNoCoroutines(
+GeventLibrary.exceptions.BundleHasNoCoroutines: The given bundle has no coroutines, please use `Add Coroutine` keyword
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 120, in test_order_of_returned_values
+    values = gevent_library_instance.run_coroutines()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 103, in run_coroutines
+    raise BundleHasNoCoroutines(
+GeventLibrary.exceptions.BundleHasNoCoroutines: The given bundle has no coroutines, please use `Add Coroutine` keyword
+
+======================================================================
+FAIL: test_run_empty_coroutine_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we run a bundle of coroutines,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 85, in test_run_empty_coroutine_bundle
+    with self.assertRaises(BundleHasNoCoroutines) as exp:
+AssertionError: BundleHasNoCoroutines not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.125s
+
+FAILED (failures=1, errors=2)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_8"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_8_1" aria-expanded="false" aria-controls="job_list___sub_collapse_8_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_8_1"><button class="btn btn-outline-success"><span class="job_id">8 : Job ID afa0baf4554a4fc7aba9a52bc34e2c0a</span></button></div></a><div aria-labelledby="job_list___sub_heading_8_1" data-parent="#job_list___sub_accordion_8" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_8_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=128" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (128, 44), end pos: (128, 46)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Eq_Gt, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -125,7 +125,7 @@
+         return len(self._active_gevent_bundles)
+ 
+     def __getitem__(self, alias: Optional[str] = None) -&gt; List[RobotKeywordCoroutine]:
+-        if len(self._active_gevent_bundles) == 0:
++        if len(self._active_gevent_bundles) &gt; 0:
+             raise NoBundleCreated(
+                 "Please create a bundle with `Create Gevent Bundle` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">EEEE.EE.EE
+======================================================================
+ERROR: test_add_coroutine_before_session (utests.test_bundle_creation.TestInstanceCreation)
+When we create a new bundle with a name that already exists,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 75, in test_add_coroutine_before_session
+    gevent_library_instance.add_coroutine("Name")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[-1][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_bundle_does_not_exist (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 130, in test_bundle_does_not_exist
+    gevent_library_instance.add_coroutine(
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 101, in test_bundle_is_empty_after_execution
+    gevent_library_instance.add_coroutine("Log", "Hello World1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 48, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.add_coroutine("Name1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_empty_bundle_with_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 28, in test_create_empty_bundle_with_alias
+    coros = gevent_library_instance["my_alias"]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_empty_bundle_without_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 38, in test_create_empty_bundle_without_alias
+    coros = gevent_library_instance[None]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 118, in test_order_of_returned_values
+    gevent_library_instance.add_coroutine("Convert To Integer", "1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_run_empty_coroutine_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we run a bundle of coroutines,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 88, in test_run_empty_coroutine_bundle
+    gevent_library_instance.run_coroutines("my_alias")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 101, in run_coroutines
+    coros = self[alias]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.012s
+
+FAILED (errors=8)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_9"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_9_1" aria-expanded="false" aria-controls="job_list___sub_collapse_9_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_9_1"><button class="btn btn-outline-success"><span class="job_id">9 : Job ID 43cc3a9eed714f23aab3a32585696b02</span></button></div></a><div aria-labelledby="job_list___sub_heading_9_1" data-parent="#job_list___sub_accordion_9" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_9_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=102" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (102, 22), end pos: (102, 24)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Eq_GtE, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -99,7 +99,7 @@
+             list: all returned values from coroutines by order
+         """
+         coros = self[alias]
+-        if len(coros) == 0:
++        if len(coros) &gt;= 0:
+             raise BundleHasNoCoroutines(
+                 "The given bundle has no coroutines, please use `Add Coroutine` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">..E.....E.
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 106, in test_bundle_is_empty_after_execution
+    gevent_library_instance.run_coroutines()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 103, in run_coroutines
+    raise BundleHasNoCoroutines(
+GeventLibrary.exceptions.BundleHasNoCoroutines: The given bundle has no coroutines, please use `Add Coroutine` keyword
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 120, in test_order_of_returned_values
+    values = gevent_library_instance.run_coroutines()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 103, in run_coroutines
+    raise BundleHasNoCoroutines(
+GeventLibrary.exceptions.BundleHasNoCoroutines: The given bundle has no coroutines, please use `Add Coroutine` keyword
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.008s
+
+FAILED (errors=2)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_10"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_10_1" aria-expanded="false" aria-controls="job_list___sub_collapse_10_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_10_1"><button class="btn btn-outline-success"><span class="job_id">10 : Job ID ca4f474db33c46389af0a64229fdd1a6</span></button></div></a><div aria-labelledby="job_list___sub_heading_10_1" data-parent="#job_list___sub_accordion_10" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_10_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=128" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (128, 44), end pos: (128, 46)</button></a></pre><pre>operator: core/ReplaceComparisonOperator_Eq_GtE, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -125,7 +125,7 @@
+         return len(self._active_gevent_bundles)
+ 
+     def __getitem__(self, alias: Optional[str] = None) -&gt; List[RobotKeywordCoroutine]:
+-        if len(self._active_gevent_bundles) == 0:
++        if len(self._active_gevent_bundles) &gt;= 0:
+             raise NoBundleCreated(
+                 "Please create a bundle with `Create Gevent Bundle` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">.EEE.EE.EE
+======================================================================
+ERROR: test_bundle_does_not_exist (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 130, in test_bundle_does_not_exist
+    gevent_library_instance.add_coroutine(
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 101, in test_bundle_is_empty_after_execution
+    gevent_library_instance.add_coroutine("Log", "Hello World1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 48, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.add_coroutine("Name1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_empty_bundle_with_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 28, in test_create_empty_bundle_with_alias
+    coros = gevent_library_instance["my_alias"]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_empty_bundle_without_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 38, in test_create_empty_bundle_without_alias
+    coros = gevent_library_instance[None]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 118, in test_order_of_returned_values
+    gevent_library_instance.add_coroutine("Convert To Integer", "1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_run_empty_coroutine_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we run a bundle of coroutines,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 88, in test_run_empty_coroutine_bundle
+    gevent_library_instance.run_coroutines("my_alias")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 101, in run_coroutines
+    coros = self[alias]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.012s
+
+FAILED (errors=7)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_11"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_11_1" aria-expanded="false" aria-controls="job_list___sub_collapse_11_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_11_1"><button class="btn btn-outline-success"><span class="job_id">11 : Job ID 2b2ff40a7bbe489b9f351a5866092ed5</span></button></div></a><div aria-labelledby="job_list___sub_heading_11_1" data-parent="#job_list___sub_accordion_11" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_11_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=137" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (137, 57), end pos: (137, 58)</button></a></pre><pre>operator: core/ReplaceUnaryOperator_USub_UAdd, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -134,5 +134,5 @@
+             if alias not in self._active_gevent_bundles:
+                 raise LookupError(f"Bundle with alias {alias} was not found")
+             return self._active_gevent_bundles[alias]
+-        return list(self._active_gevent_bundles.items())[-1][1]
++        return list(self._active_gevent_bundles.items())[+1][1]
+ </pre></div><div class="alert alert-secondary"><pre class="diff">..EE..E.E.
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 101, in test_bundle_is_empty_after_execution
+    gevent_library_instance.add_coroutine("Log", "Hello World1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[+1][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 48, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.add_coroutine("Name1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[+1][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_create_empty_bundle_without_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 38, in test_create_empty_bundle_without_alias
+    coros = gevent_library_instance[None]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[+1][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 118, in test_order_of_returned_values
+    gevent_library_instance.add_coroutine("Convert To Integer", "1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[+1][1]
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.009s
+
+FAILED (errors=4)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_12"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_12_1" aria-expanded="false" aria-controls="job_list___sub_collapse_12_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_12_1"><button class="btn btn-outline-success"><span class="job_id">12 : Job ID ad87e291e0794aa58b80ff5258ec3719</span></button></div></a><div aria-labelledby="job_list___sub_heading_12_1" data-parent="#job_list___sub_accordion_12" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_12_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=137" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (137, 57), end pos: (137, 58)</button></a></pre><pre>operator: core/ReplaceUnaryOperator_USub_Invert, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -134,5 +134,5 @@
+             if alias not in self._active_gevent_bundles:
+                 raise LookupError(f"Bundle with alias {alias} was not found")
+             return self._active_gevent_bundles[alias]
+-        return list(self._active_gevent_bundles.items())[-1][1]
++        return list(self._active_gevent_bundles.items())[~1][1]
+ </pre></div><div class="alert alert-secondary"><pre class="diff">..EE..E.E.
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 101, in test_bundle_is_empty_after_execution
+    gevent_library_instance.add_coroutine("Log", "Hello World1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[~1][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 48, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.add_coroutine("Name1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[~1][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_create_empty_bundle_without_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 38, in test_create_empty_bundle_without_alias
+    coros = gevent_library_instance[None]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[~1][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 118, in test_order_of_returned_values
+    gevent_library_instance.add_coroutine("Convert To Integer", "1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[~1][1]
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.010s
+
+FAILED (errors=4)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_13"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_13_1" aria-expanded="false" aria-controls="job_list___sub_collapse_13_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_13_1"><button class="btn btn-outline-success"><span class="job_id">13 : Job ID db86f73c477f45dbb024ecc22bff5bd3</span></button></div></a><div aria-labelledby="job_list___sub_heading_13_1" data-parent="#job_list___sub_accordion_13" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_13_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=137" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (137, 57), end pos: (137, 58)</button></a></pre><pre>operator: core/ReplaceUnaryOperator_USub_Not, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -134,5 +134,5 @@
+             if alias not in self._active_gevent_bundles:
+                 raise LookupError(f"Bundle with alias {alias} was not found")
+             return self._active_gevent_bundles[alias]
+-        return list(self._active_gevent_bundles.items())[-1][1]
++        return list(self._active_gevent_bundles.items())[not 1][1]
+ </pre></div><div class="alert alert-secondary"><pre class="diff">...F......
+======================================================================
+FAIL: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 57, in test_create_bundle_get_last_created_bundle
+    self.assertEqual(1, len(coros))
+AssertionError: 1 != 3
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.066s
+
+FAILED (failures=1)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_14"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_14_1" aria-expanded="false" aria-controls="job_list___sub_collapse_14_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_14_1"><button class="btn btn-outline-success"><span class="job_id">14 : Job ID e97c39ef1f15460eab81f7a17c1369f2</span></button></div></a><div aria-labelledby="job_list___sub_heading_14_1" data-parent="#job_list___sub_accordion_14" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_14_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=137" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (137, 57), end pos: (137, 58)</button></a></pre><pre>operator: core/ReplaceUnaryOperator_Delete_USub, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -134,5 +134,5 @@
+             if alias not in self._active_gevent_bundles:
+                 raise LookupError(f"Bundle with alias {alias} was not found")
+             return self._active_gevent_bundles[alias]
+-        return list(self._active_gevent_bundles.items())[-1][1]
++        return list(self._active_gevent_bundles.items())[1][1]
+ </pre></div><div class="alert alert-secondary"><pre class="diff">..EE..E.E.
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 101, in test_bundle_is_empty_after_execution
+    gevent_library_instance.add_coroutine("Log", "Hello World1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[1][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 48, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.add_coroutine("Name1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[1][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_create_empty_bundle_without_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 38, in test_create_empty_bundle_without_alias
+    coros = gevent_library_instance[None]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[1][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 118, in test_order_of_returned_values
+    gevent_library_instance.add_coroutine("Convert To Integer", "1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[1][1]
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.008s
+
+FAILED (errors=4)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_15"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_15_1" aria-expanded="false" aria-controls="job_list___sub_collapse_15_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_15_1"><button class="btn btn-outline-success"><span class="job_id">15 : Job ID e20a9bc8a7a24bf38222cab063fa0425</span></button></div></a><div aria-labelledby="job_list___sub_heading_15_1" data-parent="#job_list___sub_accordion_15" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_15_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=65" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (65, 11), end pos: (65, 47)</button></a></pre><pre>operator: core/AddNot, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -62,7 +62,7 @@
+             alias (str, optional): Name of alias. Defaults to None.
+         """
+         alias = alias or str(uuid4())
+-        if alias in self._active_gevent_bundles:
++        if not alias in self._active_gevent_bundles:
+             raise AliasAlreadyCreated(
+                 f"An alias with name {alias} has already been created."
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">.EEE.EE.EE
+======================================================================
+ERROR: test_bundle_does_not_exist (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 127, in test_bundle_does_not_exist
+    gevent_library_instance.create_gevent_bundle(alias="my_alias1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 66, in create_gevent_bundle
+    raise AliasAlreadyCreated(
+GeventLibrary.exceptions.AliasAlreadyCreated: An alias with name my_alias1 has already been created.
+
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 100, in test_bundle_is_empty_after_execution
+    gevent_library_instance.create_gevent_bundle(alias="my_alias")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 66, in create_gevent_bundle
+    raise AliasAlreadyCreated(
+GeventLibrary.exceptions.AliasAlreadyCreated: An alias with name my_alias has already been created.
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 47, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.create_gevent_bundle()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 66, in create_gevent_bundle
+    raise AliasAlreadyCreated(
+GeventLibrary.exceptions.AliasAlreadyCreated: An alias with name 53705954-6758-448c-8730-4d61f2566c83 has already been created.
+
+======================================================================
+ERROR: test_create_empty_bundle_with_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 27, in test_create_empty_bundle_with_alias
+    gevent_library_instance.create_gevent_bundle("my_alias")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 66, in create_gevent_bundle
+    raise AliasAlreadyCreated(
+GeventLibrary.exceptions.AliasAlreadyCreated: An alias with name my_alias has already been created.
+
+======================================================================
+ERROR: test_create_empty_bundle_without_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 37, in test_create_empty_bundle_without_alias
+    gevent_library_instance.create_gevent_bundle()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 66, in create_gevent_bundle
+    raise AliasAlreadyCreated(
+GeventLibrary.exceptions.AliasAlreadyCreated: An alias with name 2b03786e-de97-4b9d-b17e-878fc4ea3834 has already been created.
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 116, in test_order_of_returned_values
+    gevent_library_instance.create_gevent_bundle(alias="my_alias")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 66, in create_gevent_bundle
+    raise AliasAlreadyCreated(
+GeventLibrary.exceptions.AliasAlreadyCreated: An alias with name my_alias has already been created.
+
+======================================================================
+ERROR: test_run_empty_coroutine_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we run a bundle of coroutines,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 87, in test_run_empty_coroutine_bundle
+    gevent_library_instance.create_gevent_bundle(alias="my_alias")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 66, in create_gevent_bundle
+    raise AliasAlreadyCreated(
+GeventLibrary.exceptions.AliasAlreadyCreated: An alias with name my_alias has already been created.
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.013s
+
+FAILED (errors=7)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_16"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_16_1" aria-expanded="false" aria-controls="job_list___sub_collapse_16_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_16_1"><button class="btn btn-outline-success"><span class="job_id">16 : Job ID c9acde2d04344c9c9302f54e01c37944</span></button></div></a><div aria-labelledby="job_list___sub_heading_16_1" data-parent="#job_list___sub_accordion_16" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_16_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=102" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (102, 11), end pos: (102, 26)</button></a></pre><pre>operator: core/AddNot, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -99,7 +99,7 @@
+             list: all returned values from coroutines by order
+         """
+         coros = self[alias]
+-        if len(coros) == 0:
++        if not len(coros) == 0:
+             raise BundleHasNoCoroutines(
+                 "The given bundle has no coroutines, please use `Add Coroutine` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">..E.....EF
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 106, in test_bundle_is_empty_after_execution
+    gevent_library_instance.run_coroutines()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 103, in run_coroutines
+    raise BundleHasNoCoroutines(
+GeventLibrary.exceptions.BundleHasNoCoroutines: The given bundle has no coroutines, please use `Add Coroutine` keyword
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 120, in test_order_of_returned_values
+    values = gevent_library_instance.run_coroutines()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 103, in run_coroutines
+    raise BundleHasNoCoroutines(
+GeventLibrary.exceptions.BundleHasNoCoroutines: The given bundle has no coroutines, please use `Add Coroutine` keyword
+
+======================================================================
+FAIL: test_run_empty_coroutine_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we run a bundle of coroutines,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 85, in test_run_empty_coroutine_bundle
+    with self.assertRaises(BundleHasNoCoroutines) as exp:
+AssertionError: BundleHasNoCoroutines not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.090s
+
+FAILED (failures=1, errors=2)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_17"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_17_1" aria-expanded="false" aria-controls="job_list___sub_collapse_17_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_17_1"><button class="btn btn-outline-success"><span class="job_id">17 : Job ID 162f878c9d174bb9900ea9521161c9f2</span></button></div></a><div aria-labelledby="job_list___sub_heading_17_1" data-parent="#job_list___sub_accordion_17" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_17_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=120" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (120, 15), end pos: (120, 33)</button></a></pre><pre>operator: core/AddNot, occurrence: 2</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -117,7 +117,7 @@
+         coros.clear()
+         # check for exceptions...
+         for greenlet in greenlets:
+-            if greenlet.exception:
++            if not greenlet.exception:
+                 raise greenlet.exception
+         return [job.value for job in jobs]
+ </pre></div><div class="alert alert-secondary"><pre class="diff">..E.....E.
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 106, in test_bundle_is_empty_after_execution
+    gevent_library_instance.run_coroutines()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 121, in run_coroutines
+    raise greenlet.exception
+TypeError: exceptions must derive from BaseException
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 120, in test_order_of_returned_values
+    values = gevent_library_instance.run_coroutines()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 121, in run_coroutines
+    raise greenlet.exception
+TypeError: exceptions must derive from BaseException
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.101s
+
+FAILED (errors=2)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_18"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_18_1" aria-expanded="false" aria-controls="job_list___sub_collapse_18_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_18_1"><button class="btn btn-outline-success"><span class="job_id">18 : Job ID e2aa1fb28fa24065ae89adc1f98d6513</span></button></div></a><div aria-labelledby="job_list___sub_heading_18_1" data-parent="#job_list___sub_accordion_18" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_18_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=128" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (128, 11), end pos: (128, 48)</button></a></pre><pre>operator: core/AddNot, occurrence: 3</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -125,7 +125,7 @@
+         return len(self._active_gevent_bundles)
+ 
+     def __getitem__(self, alias: Optional[str] = None) -&gt; List[RobotKeywordCoroutine]:
+-        if len(self._active_gevent_bundles) == 0:
++        if not len(self._active_gevent_bundles) == 0:
+             raise NoBundleCreated(
+                 "Please create a bundle with `Create Gevent Bundle` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">EEEE.EE.EE
+======================================================================
+ERROR: test_add_coroutine_before_session (utests.test_bundle_creation.TestInstanceCreation)
+When we create a new bundle with a name that already exists,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 75, in test_add_coroutine_before_session
+    gevent_library_instance.add_coroutine("Name")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[-1][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_bundle_does_not_exist (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 130, in test_bundle_does_not_exist
+    gevent_library_instance.add_coroutine(
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 101, in test_bundle_is_empty_after_execution
+    gevent_library_instance.add_coroutine("Log", "Hello World1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 48, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.add_coroutine("Name1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_empty_bundle_with_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 28, in test_create_empty_bundle_with_alias
+    coros = gevent_library_instance["my_alias"]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_empty_bundle_without_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 38, in test_create_empty_bundle_without_alias
+    coros = gevent_library_instance[None]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 118, in test_order_of_returned_values
+    gevent_library_instance.add_coroutine("Convert To Integer", "1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_run_empty_coroutine_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we run a bundle of coroutines,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 88, in test_run_empty_coroutine_bundle
+    gevent_library_instance.run_coroutines("my_alias")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 101, in run_coroutines
+    coros = self[alias]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.012s
+
+FAILED (errors=8)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_19"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_19_1" aria-expanded="false" aria-controls="job_list___sub_collapse_19_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_19_1"><button class="btn btn-outline-success"><span class="job_id">19 : Job ID 924db4dc95354d95b0019c133d8fdcec</span></button></div></a><div aria-labelledby="job_list___sub_heading_19_1" data-parent="#job_list___sub_accordion_19" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_19_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=133" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (133, 11), end pos: (133, 16)</button></a></pre><pre>operator: core/AddNot, occurrence: 4</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -130,7 +130,7 @@
+                 "Please create a bundle with `Create Gevent Bundle` keyword"
+             )
+ 
+-        if alias:
++        if not alias:
+             if alias not in self._active_gevent_bundles:
+                 raise LookupError(f"Bundle with alias {alias} was not found")
+             return self._active_gevent_bundles[alias]</pre></div><div class="alert alert-secondary"><pre class="diff">.FEE..E.E.
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 101, in test_bundle_is_empty_after_execution
+    gevent_library_instance.add_coroutine("Log", "Hello World1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 135, in __getitem__
+    raise LookupError(f"Bundle with alias {alias} was not found")
+LookupError: Bundle with alias None was not found
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 48, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.add_coroutine("Name1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 135, in __getitem__
+    raise LookupError(f"Bundle with alias {alias} was not found")
+LookupError: Bundle with alias None was not found
+
+======================================================================
+ERROR: test_create_empty_bundle_without_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 38, in test_create_empty_bundle_without_alias
+    coros = gevent_library_instance[None]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 135, in __getitem__
+    raise LookupError(f"Bundle with alias {alias} was not found")
+LookupError: Bundle with alias None was not found
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 118, in test_order_of_returned_values
+    gevent_library_instance.add_coroutine("Convert To Integer", "1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 135, in __getitem__
+    raise LookupError(f"Bundle with alias {alias} was not found")
+LookupError: Bundle with alias None was not found
+
+======================================================================
+FAIL: test_bundle_does_not_exist (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 125, in test_bundle_does_not_exist
+    with self.assertRaises(LookupError) as exp:
+AssertionError: LookupError not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.013s
+
+FAILED (failures=1, errors=4)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_20"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_20_1" aria-expanded="false" aria-controls="job_list___sub_collapse_20_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_20_1"><button class="btn btn-outline-success"><span class="job_id">20 : Job ID ced459ca83a041938a44bd56680d73e0</span></button></div></a><div aria-labelledby="job_list___sub_heading_20_1" data-parent="#job_list___sub_accordion_20" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_20_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=134" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (134, 15), end pos: (134, 55)</button></a></pre><pre>operator: core/AddNot, occurrence: 5</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -131,7 +131,7 @@
+             )
+ 
+         if alias:
+-            if alias not in self._active_gevent_bundles:
++            if not alias not in self._active_gevent_bundles:
+                 raise LookupError(f"Bundle with alias {alias} was not found")
+             return self._active_gevent_bundles[alias]
+         return list(self._active_gevent_bundles.items())[-1][1]</pre></div><div class="alert alert-secondary"><pre class="diff">.FE..E...E
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 104, in test_bundle_is_empty_after_execution
+    coros = gevent_library_instance["my_alias"]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 135, in __getitem__
+    raise LookupError(f"Bundle with alias {alias} was not found")
+LookupError: Bundle with alias my_alias was not found
+
+======================================================================
+ERROR: test_create_empty_bundle_with_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 28, in test_create_empty_bundle_with_alias
+    coros = gevent_library_instance["my_alias"]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 135, in __getitem__
+    raise LookupError(f"Bundle with alias {alias} was not found")
+LookupError: Bundle with alias my_alias was not found
+
+======================================================================
+ERROR: test_run_empty_coroutine_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we run a bundle of coroutines,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 88, in test_run_empty_coroutine_bundle
+    gevent_library_instance.run_coroutines("my_alias")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 101, in run_coroutines
+    coros = self[alias]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 135, in __getitem__
+    raise LookupError(f"Bundle with alias {alias} was not found")
+LookupError: Bundle with alias my_alias was not found
+
+======================================================================
+FAIL: test_bundle_does_not_exist (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 133, in test_bundle_does_not_exist
+    self.assertEqual(
+AssertionError: "'my_alias4'" != 'Bundle with alias my_alias4 was not found'
+- 'my_alias4'
++ Bundle with alias my_alias4 was not found
+
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.078s
+
+FAILED (failures=1, errors=3)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_21"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_21_1" aria-expanded="false" aria-controls="job_list___sub_collapse_21_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_21_1"><button class="btn btn-outline-success"><span class="job_id">21 : Job ID 2a90fa84636e4f0cb34001501344118c</span></button></div></a><div aria-labelledby="job_list___sub_heading_21_1" data-parent="#job_list___sub_accordion_21" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_21_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=64" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (64, 22), end pos: (64, 24)</button></a></pre><pre>operator: core/ReplaceOrWithAnd, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -61,7 +61,7 @@
+         Args:
+             alias (str, optional): Name of alias. Defaults to None.
+         """
+-        alias = alias or str(uuid4())
++        alias = alias and str(uuid4())
+         if alias in self._active_gevent_bundles:
+             raise AliasAlreadyCreated(
+                 f"An alias with name {alias} has already been created."</pre></div><div class="alert alert-secondary"><pre class="diff">..EEFE...E
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 104, in test_bundle_is_empty_after_execution
+    coros = gevent_library_instance["my_alias"]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 135, in __getitem__
+    raise LookupError(f"Bundle with alias {alias} was not found")
+LookupError: Bundle with alias my_alias was not found
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 50, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.create_gevent_bundle()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 66, in create_gevent_bundle
+    raise AliasAlreadyCreated(
+GeventLibrary.exceptions.AliasAlreadyCreated: An alias with name None has already been created.
+
+======================================================================
+ERROR: test_create_empty_bundle_with_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 28, in test_create_empty_bundle_with_alias
+    coros = gevent_library_instance["my_alias"]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 135, in __getitem__
+    raise LookupError(f"Bundle with alias {alias} was not found")
+LookupError: Bundle with alias my_alias was not found
+
+======================================================================
+ERROR: test_run_empty_coroutine_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we run a bundle of coroutines,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 88, in test_run_empty_coroutine_bundle
+    gevent_library_instance.run_coroutines("my_alias")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 101, in run_coroutines
+    coros = self[alias]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 135, in __getitem__
+    raise LookupError(f"Bundle with alias {alias} was not found")
+LookupError: Bundle with alias my_alias was not found
+
+======================================================================
+FAIL: test_create_bundle_that_already_exists (utests.test_bundle_creation.TestInstanceCreation)
+When we create a new bundle with a name that already exists,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 62, in test_create_bundle_that_already_exists
+    with self.assertRaises(AliasAlreadyCreated) as exp:
+AssertionError: AliasAlreadyCreated not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.082s
+
+FAILED (failures=1, errors=4)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_22"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_22_1" aria-expanded="false" aria-controls="job_list___sub_collapse_22_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_22_1"><button class="btn btn-outline-danger"><span class="job_id">22 : Job ID 3e62c5476d2b468284617a867d9b6074</span></button></div></a><div aria-labelledby="job_list___sub_heading_22_1" data-parent="#job_list___sub_accordion_22" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_22_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=44" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (44, 33), end pos: (44, 34)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -41,7 +41,7 @@
+     """class defining gevent keywords"""
+ 
+     ROBOT_LIBRARY_SCOPE = "GLOBAL"
+-    ROBOT_LISTENER_API_VERSION = 2
++    ROBOT_LISTENER_API_VERSION = 3
+ 
+     def __init__(self) -&gt; None:
+         self._active_gevent_bundles: od[</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.082s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_23"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_23_1" aria-expanded="false" aria-controls="job_list___sub_collapse_23_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_23_1"><button class="btn btn-outline-danger"><span class="job_id">23 : Job ID 6f029eb9bc2446b3838c6b4d2669b983</span></button></div></a><div aria-labelledby="job_list___sub_heading_23_1" data-parent="#job_list___sub_accordion_23" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_23_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=44" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (44, 33), end pos: (44, 34)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -41,7 +41,7 @@
+     """class defining gevent keywords"""
+ 
+     ROBOT_LIBRARY_SCOPE = "GLOBAL"
+-    ROBOT_LISTENER_API_VERSION = 2
++    ROBOT_LISTENER_API_VERSION = 1
+ 
+     def __init__(self) -&gt; None:
+         self._active_gevent_bundles: od[</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.185s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_24"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_24_1" aria-expanded="false" aria-controls="job_list___sub_collapse_24_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_24_1"><button class="btn btn-outline-danger"><span class="job_id">24 : Job ID 6e399d6b4a5446f7a6301de351c539bc</span></button></div></a><div aria-labelledby="job_list___sub_heading_24_1" data-parent="#job_list___sub_accordion_24" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_24_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=89" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (89, 63), end pos: (89, 66)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 2</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -86,7 +86,7 @@
+         self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+ 
+     @keyword
+-    def run_coroutines(self, alias: str = None, timeout: int = 200) -&gt; List:
++    def run_coroutines(self, alias: str = None, timeout: int = 201) -&gt; List:
+         """Runs all the coroutines asynchronously.
+ 
+         Args:</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.078s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_25"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_25_1" aria-expanded="false" aria-controls="job_list___sub_collapse_25_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_25_1"><button class="btn btn-outline-danger"><span class="job_id">25 : Job ID b2908e187d4d4fd2985e55feec57cc99</span></button></div></a><div aria-labelledby="job_list___sub_heading_25_1" data-parent="#job_list___sub_accordion_25" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_25_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=89" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (89, 63), end pos: (89, 66)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 3</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -86,7 +86,7 @@
+         self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+ 
+     @keyword
+-    def run_coroutines(self, alias: str = None, timeout: int = 200) -&gt; List:
++    def run_coroutines(self, alias: str = None, timeout: int = 199) -&gt; List:
+         """Runs all the coroutines asynchronously.
+ 
+         Args:</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.090s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_26"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_26_1" aria-expanded="false" aria-controls="job_list___sub_collapse_26_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_26_1"><button class="btn btn-outline-danger"><span class="job_id">26 : Job ID 33b0a5c3ed28497396376b425f4efc30</span></button></div></a><div aria-labelledby="job_list___sub_heading_26_1" data-parent="#job_list___sub_accordion_26" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_26_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=102" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (102, 25), end pos: (102, 26)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 4</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -99,7 +99,7 @@
+             list: all returned values from coroutines by order
+         """
+         coros = self[alias]
+-        if len(coros) == 0:
++        if len(coros) == 1:
+             raise BundleHasNoCoroutines(
+                 "The given bundle has no coroutines, please use `Add Coroutine` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.068s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_27"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_27_1" aria-expanded="false" aria-controls="job_list___sub_collapse_27_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_27_1"><button class="btn btn-outline-success"><span class="job_id">27 : Job ID 24cd855b4c8f4b0b9eeef45af331f89d</span></button></div></a><div aria-labelledby="job_list___sub_heading_27_1" data-parent="#job_list___sub_accordion_27" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_27_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=102" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (102, 25), end pos: (102, 26)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 5</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -99,7 +99,7 @@
+             list: all returned values from coroutines by order
+         """
+         coros = self[alias]
+-        if len(coros) == 0:
++        if len(coros) == -1:
+             raise BundleHasNoCoroutines(
+                 "The given bundle has no coroutines, please use `Add Coroutine` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">.........F
+======================================================================
+FAIL: test_run_empty_coroutine_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we run a bundle of coroutines,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 85, in test_run_empty_coroutine_bundle
+    with self.assertRaises(BundleHasNoCoroutines) as exp:
+AssertionError: BundleHasNoCoroutines not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.068s
+
+FAILED (failures=1)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_28"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_28_1" aria-expanded="false" aria-controls="job_list___sub_collapse_28_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_28_1"><button class="btn btn-outline-success"><span class="job_id">28 : Job ID 185afdcbe6224bb0acd60cf0838676fb</span></button></div></a><div aria-labelledby="job_list___sub_heading_28_1" data-parent="#job_list___sub_accordion_28" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_28_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=128" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (128, 47), end pos: (128, 48)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 6</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -125,7 +125,7 @@
+         return len(self._active_gevent_bundles)
+ 
+     def __getitem__(self, alias: Optional[str] = None) -&gt; List[RobotKeywordCoroutine]:
+-        if len(self._active_gevent_bundles) == 0:
++        if len(self._active_gevent_bundles) == 1:
+             raise NoBundleCreated(
+                 "Please create a bundle with `Create Gevent Bundle` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">E.EE.EE.EE
+======================================================================
+ERROR: test_add_coroutine_before_session (utests.test_bundle_creation.TestInstanceCreation)
+When we create a new bundle with a name that already exists,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 75, in test_add_coroutine_before_session
+    gevent_library_instance.add_coroutine("Name")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[-1][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 101, in test_bundle_is_empty_after_execution
+    gevent_library_instance.add_coroutine("Log", "Hello World1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 48, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.add_coroutine("Name1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_empty_bundle_with_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 28, in test_create_empty_bundle_with_alias
+    coros = gevent_library_instance["my_alias"]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_create_empty_bundle_without_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 38, in test_create_empty_bundle_without_alias
+    coros = gevent_library_instance[None]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 118, in test_order_of_returned_values
+    gevent_library_instance.add_coroutine("Convert To Integer", "1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+======================================================================
+ERROR: test_run_empty_coroutine_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we run a bundle of coroutines,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 88, in test_run_empty_coroutine_bundle
+    gevent_library_instance.run_coroutines("my_alias")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 101, in run_coroutines
+    coros = self[alias]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 129, in __getitem__
+    raise NoBundleCreated(
+GeventLibrary.exceptions.NoBundleCreated: Please create a bundle with `Create Gevent Bundle` keyword
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.014s
+
+FAILED (errors=7)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_29"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_29_1" aria-expanded="false" aria-controls="job_list___sub_collapse_29_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_29_1"><button class="btn btn-outline-success"><span class="job_id">29 : Job ID 2ae5214d67e646a3ab7750b6d433d4e4</span></button></div></a><div aria-labelledby="job_list___sub_heading_29_1" data-parent="#job_list___sub_accordion_29" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_29_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=128" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (128, 47), end pos: (128, 48)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 7</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -125,7 +125,7 @@
+         return len(self._active_gevent_bundles)
+ 
+     def __getitem__(self, alias: Optional[str] = None) -&gt; List[RobotKeywordCoroutine]:
+-        if len(self._active_gevent_bundles) == 0:
++        if len(self._active_gevent_bundles) == -1:
+             raise NoBundleCreated(
+                 "Please create a bundle with `Create Gevent Bundle` keyword"
+             )</pre></div><div class="alert alert-secondary"><pre class="diff">E.........
+======================================================================
+ERROR: test_add_coroutine_before_session (utests.test_bundle_creation.TestInstanceCreation)
+When we create a new bundle with a name that already exists,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 75, in test_add_coroutine_before_session
+    gevent_library_instance.add_coroutine("Name")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[-1][1]
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.087s
+
+FAILED (errors=1)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_30"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_30_1" aria-expanded="false" aria-controls="job_list___sub_collapse_30_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_30_1"><button class="btn btn-outline-success"><span class="job_id">30 : Job ID b47ebfb3ee564552b9c4353da396318f</span></button></div></a><div aria-labelledby="job_list___sub_heading_30_1" data-parent="#job_list___sub_accordion_30" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_30_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=137" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (137, 58), end pos: (137, 59)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 8</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -134,5 +134,5 @@
+             if alias not in self._active_gevent_bundles:
+                 raise LookupError(f"Bundle with alias {alias} was not found")
+             return self._active_gevent_bundles[alias]
+-        return list(self._active_gevent_bundles.items())[-1][1]
++        return list(self._active_gevent_bundles.items())[- 2][1]
+ </pre></div><div class="alert alert-secondary"><pre class="diff">..EE..E.E.
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 101, in test_bundle_is_empty_after_execution
+    gevent_library_instance.add_coroutine("Log", "Hello World1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[- 2][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 48, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.add_coroutine("Name1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[- 2][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_create_empty_bundle_without_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 38, in test_create_empty_bundle_without_alias
+    coros = gevent_library_instance[None]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[- 2][1]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 118, in test_order_of_returned_values
+    gevent_library_instance.add_coroutine("Convert To Integer", "1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[- 2][1]
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.012s
+
+FAILED (errors=4)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_31"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_31_1" aria-expanded="false" aria-controls="job_list___sub_collapse_31_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_31_1"><button class="btn btn-outline-success"><span class="job_id">31 : Job ID 4ae3cdcc39104ab0b0c2b0cd72936ef1</span></button></div></a><div aria-labelledby="job_list___sub_heading_31_1" data-parent="#job_list___sub_accordion_31" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_31_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=137" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (137, 58), end pos: (137, 59)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 9</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -134,5 +134,5 @@
+             if alias not in self._active_gevent_bundles:
+                 raise LookupError(f"Bundle with alias {alias} was not found")
+             return self._active_gevent_bundles[alias]
+-        return list(self._active_gevent_bundles.items())[-1][1]
++        return list(self._active_gevent_bundles.items())[- 0][1]
+ </pre></div><div class="alert alert-secondary"><pre class="diff">...F......
+======================================================================
+FAIL: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 57, in test_create_bundle_get_last_created_bundle
+    self.assertEqual(1, len(coros))
+AssertionError: 1 != 3
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.076s
+
+FAILED (failures=1)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_32"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_32_1" aria-expanded="false" aria-controls="job_list___sub_collapse_32_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_32_1"><button class="btn btn-outline-success"><span class="job_id">32 : Job ID 5157971c7e1f41798ad6fd26b568f49f</span></button></div></a><div aria-labelledby="job_list___sub_heading_32_1" data-parent="#job_list___sub_accordion_32" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_32_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=137" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (137, 61), end pos: (137, 62)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 10</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -134,5 +134,5 @@
+             if alias not in self._active_gevent_bundles:
+                 raise LookupError(f"Bundle with alias {alias} was not found")
+             return self._active_gevent_bundles[alias]
+-        return list(self._active_gevent_bundles.items())[-1][1]
++        return list(self._active_gevent_bundles.items())[-1][ 2]
+ </pre></div><div class="alert alert-secondary"><pre class="diff">..EE..E.E.
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 101, in test_bundle_is_empty_after_execution
+    gevent_library_instance.add_coroutine("Log", "Hello World1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[-1][ 2]
+IndexError: tuple index out of range
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 48, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.add_coroutine("Name1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[-1][ 2]
+IndexError: tuple index out of range
+
+======================================================================
+ERROR: test_create_empty_bundle_without_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 38, in test_create_empty_bundle_without_alias
+    coros = gevent_library_instance[None]
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[-1][ 2]
+IndexError: tuple index out of range
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 118, in test_order_of_returned_values
+    gevent_library_instance.add_coroutine("Convert To Integer", "1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 137, in __getitem__
+    return list(self._active_gevent_bundles.items())[-1][ 2]
+IndexError: tuple index out of range
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.008s
+
+FAILED (errors=4)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_33"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_33_1" aria-expanded="false" aria-controls="job_list___sub_collapse_33_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_33_1"><button class="btn btn-outline-success"><span class="job_id">33 : Job ID 0c45ac77af024985b5b97874376e1038</span></button></div></a><div aria-labelledby="job_list___sub_heading_33_1" data-parent="#job_list___sub_accordion_33" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_33_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=137" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (137, 61), end pos: (137, 62)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 11</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -134,5 +134,5 @@
+             if alias not in self._active_gevent_bundles:
+                 raise LookupError(f"Bundle with alias {alias} was not found")
+             return self._active_gevent_bundles[alias]
+-        return list(self._active_gevent_bundles.items())[-1][1]
++        return list(self._active_gevent_bundles.items())[-1][ 0]
+ </pre></div><div class="alert alert-secondary"><pre class="diff">..EE..F.E.
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 101, in test_bundle_is_empty_after_execution
+    gevent_library_instance.add_coroutine("Log", "Hello World1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+AttributeError: 'str' object has no attribute 'append'
+
+======================================================================
+ERROR: test_create_bundle_get_last_created_bundle (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 48, in test_create_bundle_get_last_created_bundle
+    gevent_library_instance.add_coroutine("Name1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+AttributeError: 'str' object has no attribute 'append'
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 118, in test_order_of_returned_values
+    gevent_library_instance.add_coroutine("Convert To Integer", "1")
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 86, in add_coroutine
+    self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+AttributeError: 'str' object has no attribute 'append'
+
+======================================================================
+FAIL: test_create_empty_bundle_without_alias (utests.test_bundle_creation.TestInstanceCreation)
+When we add a new bundle of coroutines, length should be increased to 1,
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 41, in test_create_empty_bundle_without_alias
+    self.assertEqual(0, len(coros))
+AssertionError: 0 != 36
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.011s
+
+FAILED (failures=1, errors=3)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_34"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_34_1" aria-expanded="false" aria-controls="job_list___sub_collapse_34_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_34_1"><button class="btn btn-outline-danger"><span class="job_id">34 : Job ID cba2143c31ba499fae535331583cf056</span></button></div></a><div aria-labelledby="job_list___sub_heading_34_1" data-parent="#job_list___sub_accordion_34" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_34_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=26" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (26, 4), end pos: (27, 0)</button></a></pre><pre>operator: core/RemoveDecorator, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -22,8 +22,6 @@
+         self._keyword_name = keyword_name
+         self._args = args
+         self._kwargs = kwargs
+-
+-    @property
+     def keyword_name(self):
+         """keyword to execute"""
+         return self._keyword_name</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.111s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_35"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_35_1" aria-expanded="false" aria-controls="job_list___sub_collapse_35_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-success" id="job_list___sub_heading_35_1"><button class="btn btn-outline-success"><span class="job_id">35 : Job ID 748380b1a98a45a48cd804822990b6a7</span></button></div></a><div aria-labelledby="job_list___sub_heading_35_1" data-parent="#job_list___sub_accordion_35" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_35_1"><div class="card-body"><div class="work-item"><div class="alert alert-success test-outcome" role="alert"><p>worker outcome: normal</p><p>test outcome: killed</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=31" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (31, 4), end pos: (32, 0)</button></a></pre><pre>operator: core/RemoveDecorator, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -27,8 +27,6 @@
+     def keyword_name(self):
+         """keyword to execute"""
+         return self._keyword_name
+-
+-    @property
+     def all_args(self):
+         """args and kwargs in robotframework format"""
+         return [</pre></div><div class="alert alert-secondary"><pre class="diff">..E.....E.
+======================================================================
+ERROR: test_bundle_is_empty_after_execution (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 106, in test_bundle_is_empty_after_execution
+    gevent_library_instance.run_coroutines()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 105, in run_coroutines
+    jobs = [
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 106, in &lt;listcomp&gt;
+    spawn(
+TypeError: Value after * must be an iterable, not method
+
+======================================================================
+ERROR: test_order_of_returned_values (utests.test_bundle_creation.TestInstanceCreation)
+After the bundle is executed, the coroutines should be deleted.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\workspace-vscode\robotframework-gevent\utests\test_bundle_creation.py", line 120, in test_order_of_returned_values
+    values = gevent_library_instance.run_coroutines()
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 105, in run_coroutines
+    jobs = [
+  File "C:\workspace-vscode\robotframework-gevent\src\GeventLibrary\keywords\gevent_keywords.py", line 106, in &lt;listcomp&gt;
+    spawn(
+TypeError: Value after * must be an iterable, not method
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.017s
+
+FAILED (errors=2)
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_36"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_36_1" aria-expanded="false" aria-controls="job_list___sub_collapse_36_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_36_1"><button class="btn btn-outline-danger"><span class="job_id">36 : Job ID 64c8f3abcae54c139cb8da1103193024</span></button></div></a><div aria-labelledby="job_list___sub_heading_36_1" data-parent="#job_list___sub_accordion_36" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_36_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=51" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (51, 4), end pos: (52, 0)</button></a></pre><pre>operator: core/RemoveDecorator, occurrence: 2</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -47,8 +47,6 @@
+         self._active_gevent_bundles: od[
+             str, List[RobotKeywordCoroutine]
+         ] = OrderedDict()
+-
+-    @keyword
+     def create_gevent_bundle(self, alias: str = None):
+         """this methods creates a bundle for coroutines to run,
+         once the bundle is created you can attach keywords to it</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.071s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_37"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_37_1" aria-expanded="false" aria-controls="job_list___sub_collapse_37_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_37_1"><button class="btn btn-outline-danger"><span class="job_id">37 : Job ID d4a1297c2c2b4b8b849562ec6305deae</span></button></div></a><div aria-labelledby="job_list___sub_heading_37_1" data-parent="#job_list___sub_accordion_37" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_37_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=71" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (71, 4), end pos: (72, 0)</button></a></pre><pre>operator: core/RemoveDecorator, occurrence: 3</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -67,8 +67,6 @@
+                 f"An alias with name {alias} has already been created."
+             )
+         self._active_gevent_bundles[alias] = []
+-
+-    @keyword
+     def add_coroutine(self, keyword_name: str, *args, alias: str = None, **kwargs):
+         """Adding a new keyword to be a coroutine of the bundle,
+         If no bundle alias is given, the last created bundle will be used by default</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.082s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_38"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_38_1" aria-expanded="false" aria-controls="job_list___sub_collapse_38_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_38_1"><button class="btn btn-outline-danger"><span class="job_id">38 : Job ID 612d048c2543427aba2a9477d62b38ff</span></button></div></a><div aria-labelledby="job_list___sub_heading_38_1" data-parent="#job_list___sub_accordion_38" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_38_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=88" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (88, 4), end pos: (89, 0)</button></a></pre><pre>operator: core/RemoveDecorator, occurrence: 4</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -84,8 +84,6 @@
+             **args (kwargs): all keyword arguments of the keywords
+         """
+         self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+-
+-    @keyword
+     def run_coroutines(self, alias: str = None, timeout: int = 200) -&gt; List:
+         """Runs all the coroutines asynchronously.
+ </pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.075s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_39"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_39_1" aria-expanded="false" aria-controls="job_list___sub_collapse_39_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_39_1"><button class="btn btn-outline-danger"><span class="job_id">39 : Job ID 950b317a4d3043deb19bdcdbc3e761b1</span></button></div></a><div aria-labelledby="job_list___sub_heading_39_1" data-parent="#job_list___sub_accordion_39" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_39_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\keywords\gevent_keywords.py&amp;line=119" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\keywords\gevent_keywords.py, start pos: (119, 24), end pos: (119, 33)</button></a></pre><pre>operator: core/ZeroIterationForLoop, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\keywords\gevent_keywords.py
++++ bsrc\GeventLibrary\keywords\gevent_keywords.py
+@@ -116,7 +116,7 @@
+         greenlets = joinall(jobs, timeout=timeout)
+         coros.clear()
+         # check for exceptions...
+-        for greenlet in greenlets:
++        for greenlet in []:
+             if greenlet.exception:
+                 raise greenlet.exception
+         return [job.value for job in jobs]</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.080s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_40"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_40_1" aria-expanded="false" aria-controls="job_list___sub_collapse_40_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_40_1"><button class="btn btn-outline-danger"><span class="job_id">40 : Job ID 14f08f9dbab444e5934fc21141f40f14</span></button></div></a><div aria-labelledby="job_list___sub_heading_40_1" data-parent="#job_list___sub_accordion_40" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_40_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\gevent_library.py&amp;line=27" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\gevent_library.py, start pos: (27, 24), end pos: (27, 29)</button></a></pre><pre>operator: core/ReplaceFalseWithTrue, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\gevent_library.py
++++ bsrc\GeventLibrary\gevent_library.py
+@@ -24,7 +24,7 @@
+ # pylint: disable=wrong-import-position
+ # pylint: disable=wrong-import-order
+ from gevent import monkey
+-monkey.patch_all(thread=False)
++monkey.patch_all(thread=True)
+ from typing import Any, List
+ 
+ from robotlibcore import DynamicCore  # type: ignore</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.063s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_41"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_41_1" aria-expanded="false" aria-controls="job_list___sub_collapse_41_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_41_1"><button class="btn btn-outline-danger"><span class="job_id">41 : Job ID eaade1f2a32c483faa974e7921168862</span></button></div></a><div aria-labelledby="job_list___sub_heading_41_1" data-parent="#job_list___sub_accordion_41" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_41_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\gevent_library.py&amp;line=60" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\gevent_library.py, start pos: (60, 33), end pos: (60, 34)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 0</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\gevent_library.py
++++ bsrc\GeventLibrary\gevent_library.py
+@@ -57,7 +57,7 @@
+ 
+     libraries: List[Any] = [GeventKeywords()]
+     ROBOT_LIBRARY_SCOPE = "TEST SUITE"
+-    ROBOT_LISTENER_API_VERSION = 2
++    ROBOT_LISTENER_API_VERSION = 3
+ 
+     def __init__(self):
+         self.ROBOT_LIBRARY_LISTENER = self</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.087s
+
+OK
+</pre></div></div></div></div></div><div class="mb-1" id="job_list___sub_accordion_42"><div class="card"><a data-toggle="collapse" data-target="#job_list___sub_collapse_42_1" aria-expanded="false" aria-controls="job_list___sub_collapse_42_1" href="#" class="job_list___sub_multi_heading"><div role="alert" class="card-header alert-danger" id="job_list___sub_heading_42_1"><button class="btn btn-outline-danger"><span class="job_id">42 : Job ID 566aea283f034045add14e4114aa14ea</span></button></div></a><div aria-labelledby="job_list___sub_heading_42_1" data-parent="#job_list___sub_accordion_42" class="collapse job_list___sub_multi_collapse" id="job_list___sub_collapse_42_1"><div class="card-body"><div class="work-item"><div class="alert alert-danger test-outcome" role="alert"><p>SURVIVED</p><p>worker outcome: normal</p><p>test outcome: survived</p></div></div><pre class="location"><a href="pycharm://open?file=src\GeventLibrary\gevent_library.py&amp;line=60" class="text-secondary"><button class="btn btn-outline-dark">src\GeventLibrary\gevent_library.py, start pos: (60, 33), end pos: (60, 34)</button></a></pre><pre>operator: core/NumberReplacer, occurrence: 1</pre><div class="alert alert-secondary"><pre class="diff">--- mutation diff ---
+--- asrc\GeventLibrary\gevent_library.py
++++ bsrc\GeventLibrary\gevent_library.py
+@@ -57,7 +57,7 @@
+ 
+     libraries: List[Any] = [GeventKeywords()]
+     ROBOT_LIBRARY_SCOPE = "TEST SUITE"
+-    ROBOT_LISTENER_API_VERSION = 2
++    ROBOT_LISTENER_API_VERSION = 1
+ 
+     def __init__(self):
+         self.ROBOT_LIBRARY_LISTENER = self</pre></div><div class="alert alert-secondary"><pre class="diff">..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.060s
+
+OK
+</pre></div></div></div></div></div></div></div></div></div></div><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script><script type="text/javascript">$('div.job_list___sub_multi_collapse').on('shown.bs.collapse',  function () {    correct_behavior_functional_buttons();  });$('div.job_list___sub_multi_collapse').on('hidden.bs.collapse',  function () {    correct_behavior_functional_buttons();  });function correct_behavior_functional_buttons() {    var expand = false;    var collapse = false;    $('a.job_list___sub_multi_heading').each(function(index) {      if ($(this).attr('aria-expanded') == 'false') {        expand = true;        return false;      };    });    $('a.job_list___sub_multi_heading').each(function(index) {      if ($(this).attr('aria-expanded') == 'true') {        collapse = true;        return false;      };    });    if (expand) {      $('div#job_item_expand_all').css('display', 'inline-block');    } else {      $('div#job_item_expand_all').css('display', 'none');    };    if (collapse) {      $('div#job_item_collapse_all').css('display', 'inline-block');    } else {      $('div#job_item_collapse_all').css('display', 'none');    };  };correct_behavior_functional_buttons();</script></body></html>

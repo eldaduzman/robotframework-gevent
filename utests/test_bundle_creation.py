@@ -1,6 +1,6 @@
 """unittest module, create coroutine session"""
 import sys
-from unittest import TestCase, mock
+from unittest import TestCase, mock, main
 
 sys.path.insert(0, "src")
 from GeventLibrary.exceptions import (
@@ -134,3 +134,7 @@ class TestInstanceCreation(TestCase):
             str(exp.exception),
             "Bundle with alias my_alias4 was not found",
         )
+
+
+if __name__ == "__main__":
+    main()
