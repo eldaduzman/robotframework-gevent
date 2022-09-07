@@ -1,9 +1,13 @@
+"""gevent keywords"""
+
 from collections import OrderedDict
-from typing import Callable, List
+from typing import List, Optional
 from typing import OrderedDict as od
 from uuid import uuid4
 
 from gevent import joinall, spawn
+from GeventLibrary.exceptions import (AliasAlreadyCreated, NoBundleCreated,
+                                      BundleHasNoCoroutines)
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn
 
@@ -18,23 +22,18 @@ class RobotKeywordCoroutine:
 
     @property
     def keyword_name(self):
+        """keyword to execute"""
         return self._keyword_name
 
     @property
     def args(self):
+        """args to pass"""
         return self._args
 
     @property
     def kwargs(self):
+        """kwargs to pass"""
         return self._kwargs
-
-
-class NoSessionCreated(Exception):
-    pass
-
-
-class SessionHasNoCoroutines(Exception):
-    pass
 
 
 class GeventKeywords:
@@ -44,27 +43,14 @@ class GeventKeywords:
     ROBOT_LISTENER_API_VERSION = 2
 
     def __init__(self) -> None:
-        self._active_gevent_sessions: od[
+        self._active_gevent_bundles: od[
             str, List[RobotKeywordCoroutine]
         ] = OrderedDict()
 
-    def _get_session_coroutines(self, alias: str = None):
-        if len(self._active_gevent_sessions) == 0:
-            raise NoSessionCreated(
-                "Please create a session with `Create Session` keyword"
-            )
-
-        if alias:
-            if alias not in self._active_gevent_sessions:
-                raise LookupError(f"session with alias {alias} was not found")
-            sessions_coros = self._active_gevent_sessions[alias]
-        else:
-            sessions_coros = list(self._active_gevent_sessions.items())[-1][1]
-        return sessions_coros
-
     @keyword
     def create_gevent_bundle(self, alias: str = None):
-        """this methods creates a session for coroutines to run, once the session is created you can attach keywords to it
+        """this methods creates a bundle for coroutines to run,
+        once the bundle is created you can attach keywords to it
         these keywords will be executed asynchronously when `Run Coroutines` is called
         Examples:
 
@@ -75,12 +61,16 @@ class GeventKeywords:
             alias (str, optional): Name of alias. Defaults to None.
         """
         alias = alias or str(uuid4())
-        self._active_gevent_sessions[alias] = []
+        if alias in self._active_gevent_bundles:
+            raise AliasAlreadyCreated(
+                f"An alias with name {alias} has already been created."
+            )
+        self._active_gevent_bundles[alias] = []
 
     @keyword
     def add_coroutine(self, keyword_name: str, *args, alias: str = None, **kwargs):
-        """Adding a new keyword to be a coroutine of the session,
-        If no session alias is given, the last created session will be used by default
+        """Adding a new keyword to be a coroutine of the bundle,
+        If no bundle alias is given, the last created bundle will be used by default
         Examples:
 
         |       Add Coroutine    Sleep    1s
@@ -92,11 +82,10 @@ class GeventKeywords:
             alias (str, optional): Name of alias. Defaults to None.
             **args (kwargs): all keyword arguments of the keywords
         """
-        sessions_coros = self._get_session_coroutines(alias=alias)
-        sessions_coros.append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
+        self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
 
     @keyword
-    def run_coroutines(self, alias: str = None) ->List:
+    def run_coroutines(self, alias: str = None) -> List:
         """Runs all the coroutines asynchronously.
 
         Args:
@@ -105,19 +94,38 @@ class GeventKeywords:
             |    ${values}    Run Coroutines    alias=alias1
 
         Returns:
-            list: all returned values from coroutines
+            list: all returned values from coroutines by order
         """
-        sessions_coros = self._get_session_coroutines(alias=alias)
-        if len(sessions_coros) == 0:
-            raise SessionHasNoCoroutines(
-                "The given session has no coroutines, please use `Add Coroutine` keyword"
+        coros = self[alias]
+        if len(coros) == 0:
+            raise BundleHasNoCoroutines(
+                "The given bundle has no coroutines, please use `Add Coroutine` keyword"
             )
-        bi = BuiltIn()
+        built_in = BuiltIn()
         jobs = [
-            spawn(bi.run_keyword, coro.keyword_name, *coro.args)
-            for coro in sessions_coros
+            spawn(built_in.run_keyword, coro.keyword_name, *coro.args)
+            for coro in coros
         ]
 
-        _ = joinall(jobs, timeout=200)
-        sessions_coros.clear()
+        greenlets = joinall(jobs, timeout=200)
+        coros.clear()
+        # check for exceptions...
+        for greenlet in greenlets:
+            if greenlet.exception:
+                raise greenlet.exception 
         return [job.value for job in jobs]
+
+    def __len__(self):
+        return len(self._active_gevent_bundles)
+
+    def __getitem__(self, alias: Optional[str] = None) -> List[RobotKeywordCoroutine]:
+        if len(self._active_gevent_bundles) == 0:
+            raise NoBundleCreated(
+                "Please create a bundle with `Create Gevent Bundle` keyword"
+            )
+
+        if alias:
+            if alias not in self._active_gevent_bundles:
+                raise LookupError(f"Bundle with alias {alias} was not found")
+            return self._active_gevent_bundles[alias]
+        return list(self._active_gevent_bundles.items())[-1][1]

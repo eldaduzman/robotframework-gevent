@@ -1,23 +1,28 @@
-# Copyright (c) 2022 Eldad Uzman
+"""
+Copyright (c) 2022 Eldad Uzman
 
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
 
+# genevt monkey patch should be placed at the top
+# pylint: disable=wrong-import-position
+# pylint: disable=wrong-import-order
 from gevent import monkey
 monkey.patch_all(thread=False)
 from typing import Any, List
@@ -29,12 +34,11 @@ from .keywords import GeventKeywords
 
 class GeventLibrary(DynamicCore):
     """
-    *GeventLibrary* library enables robotframework developers to run a bundle of keywords as coroutines.
+    *GeventLibrary* library enables robotframework developers to run a \
+    bundle of keywords as coroutines.
+
     Each keywords gets its own greenlet so that they are executed to completion.
 
-    Gevent acts as both a library with designated keywords, and also as a listener, which hooks to the keywords executed in the robot script
-
-    TODO: keywords listener needs to replace the keywords with their gevent compliant counterparts.
     ```
     *** Settings ***
     Library             GeventLibrary
@@ -43,11 +47,11 @@ class GeventLibrary(DynamicCore):
     *** Test Cases ***
     Test1
         Log    Hello World
-        Create Session    alias=alias1
-        Add Coroutine    Sleep    1s    alias=alias1
-        Add Coroutine    Sleep    1s    alias=alias1
-        ${values}    Run Coroutines    alias=alias1
-        Log Many    @{values}
+        Create Gevent Bundle    alias=alias1
+        Add Coroutine           Sleep    1s    alias=alias1
+        Add Coroutine           Sleep    1s    alias=alias1
+        ${values}               Run Coroutines    alias=alias1
+        Log Many                @{values}
     ```
     """
 
@@ -59,5 +63,4 @@ class GeventLibrary(DynamicCore):
         self.ROBOT_LIBRARY_LISTENER = self
         DynamicCore.__init__(self, GeventLibrary.libraries)
 
-    def end_test(self, name, attr):
-        pass
+    # TODO: listener functions here...

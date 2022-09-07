@@ -16,26 +16,44 @@ Run keywords asynchronously with the power of gevent
 # simple-test.robot
 *** Settings ***
 
-Library    String
+Library             Collections
+Library             String
 Library             GeventLibrary
+Library             RequestsLibrary
 
 
 *** Test Cases ***
 Test1
+    [Documentation]    Simpla test flow with gevent greenlets
     Log    Hello World
-    Create Session    alias=alias1
+    Create Gevent Bundle    alias=alias1 # Create a bundle of coroutines
+    Sleep    10s    alias=alias1    # run your synchronous keyword
+    # register all your keywords as coroutines to the gevent bundle
     Add Coroutine    Sleep Wrapper    alias=alias1
     Add Coroutine    Sleep    20s    alias=alias1
     Add Coroutine    Sleep    10s    alias=alias1
+    Add Coroutine    GET    https://jsonplaceholder.typicode.com/posts/1    alias=alias1
     Add Coroutine    Convert To Lower Case    UPPER
+
+    # Run your coroutines and get the values by order
     ${values}    Run Coroutines    alias=alias1
     Log Many    @{values}
+
+    # The 3rd coroutine was a request, take it's value
+    ${jsonplaceholder_resp}    Get From List    ${values}    3
+
+    # assert the returned response code to be 200
+    Status Should Be    200    ${jsonplaceholder_resp}
+    # assert that the returned `userId` field equals to 1
+    Should Be Equal As Strings    1    ${jsonplaceholder_resp.json()['userId']}
+
 
 *** Keywords ***
 Sleep Wrapper
     Sleep    1s
+
 ```
-### run command:
+### run test:
 ```
 >>> robot simple-test.robot
 ```
@@ -61,17 +79,21 @@ With the power of [gevent](http://www.gevent.org/), we can run several coroutine
 |           
 +---src
 |   \---GeventLibrary
+|       |   \---exceptions
+|       |       |   __init__.py
 |       |   \---keywords
 |       |       |   __init__.py
-|       |       |   genvet_keywords.py
+|       |       |   gevent_keywords.py
 |       |   __init__.py
-|       |   genvet_keywords.py
+|       |   gevent_library.py
 |               
 +---atests
 |   |   __init__.robot
 |   |   simple-test.robot
 |   |   
 |   \---utests
+|       |   __init__.py
+|       |   test_bundle_creation.py
 
 ```
 ## Code styling
