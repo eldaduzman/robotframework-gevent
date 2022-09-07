@@ -86,11 +86,12 @@ class GeventKeywords:
         self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
 
     @keyword
-    def run_coroutines(self, alias: str = None) -> List:
+    def run_coroutines(self, alias: str = None, timeout: int = 200) -> List:
         """Runs all the coroutines asynchronously.
 
         Args:
             alias (str, optional): Name of alias. Defaults to None.
+            alias (int, optional): Coroutines execution timeout in seconds. Defaults to 200.
 
             |    ${values}    Run Coroutines    alias=alias1
 
@@ -112,7 +113,7 @@ class GeventKeywords:
             for coro in coros
         ]
 
-        greenlets = joinall(jobs, timeout=200)
+        greenlets = joinall(jobs, timeout=timeout)
         coros.clear()
         # check for exceptions...
         for greenlet in greenlets:
