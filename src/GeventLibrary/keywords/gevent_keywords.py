@@ -6,8 +6,11 @@ from typing import OrderedDict as od
 from uuid import uuid4
 
 from gevent import joinall, spawn
-from GeventLibrary.exceptions import (AliasAlreadyCreated, NoBundleCreated,
-                                      BundleHasNoCoroutines)
+from GeventLibrary.exceptions import (
+    AliasAlreadyCreated,
+    NoBundleCreated,
+    BundleHasNoCoroutines,
+)
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn
 
@@ -26,14 +29,12 @@ class RobotKeywordCoroutine:
         return self._keyword_name
 
     @property
-    def args(self):
-        """args to pass"""
-        return self._args
-
-    @property
-    def kwargs(self):
-        """kwargs to pass"""
-        return self._kwargs
+    def all_args(self):
+        """args and kwargs in robotframework format"""
+        return [
+            *self._args,
+            *[f"{key}={value}" for key, value in self._kwargs.items()],
+        ]
 
 
 class GeventKeywords:
@@ -103,7 +104,11 @@ class GeventKeywords:
             )
         built_in = BuiltIn()
         jobs = [
-            spawn(built_in.run_keyword, coro.keyword_name, *coro.args)
+            spawn(
+                built_in.run_keyword,
+                coro.keyword_name,
+                *coro.all_args,
+            )
             for coro in coros
         ]
 
@@ -112,7 +117,7 @@ class GeventKeywords:
         # check for exceptions...
         for greenlet in greenlets:
             if greenlet.exception:
-                raise greenlet.exception 
+                raise greenlet.exception
         return [job.value for job in jobs]
 
     def __len__(self):

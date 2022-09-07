@@ -15,7 +15,7 @@ Test1
     Create Gevent Bundle    alias=alias1
     Sleep    10s    alias=alias1    # synchronous keyword
     Add Coroutine    Sleep Wrapper    alias=alias1
-    Add Coroutine    Sleep    20s    alias=alias1
+    Add Coroutine    Sleep    time_=20s    alias=alias1
     Add Coroutine    Sleep    10s    alias=alias1
     Add Coroutine    GET    https://jsonplaceholder.typicode.com/posts/1    alias=alias1
     Add Coroutine    Convert To Lower Case    UPPER
