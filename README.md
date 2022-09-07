@@ -66,6 +66,24 @@ In order to test such systems, we need the ability to run coroutines in our test
 
 With the power of [gevent](http://www.gevent.org/), we can run several coroutines in greenlets, so integrating them into our robotframework test script will provide super powers to our testing efforts!
 
+## Why gevent?
+
+Concurrency can be achieved in 3 different ways:
+
+1.  Multiprocessing - running each task in it's own `process`.
+    The cons of such an approach would be massive consumption of resources, namely CPU and memory, as this means to allocate an entire `memory heap` to each task.
+    Another problem is a possible need for `Inter-Process Communication (IPC)` that might be costly.
+
+2.  Multithreading - running each task in a `thread`.
+    Unlike multiprocessing, now all tasks run on the same memory heap and separated by threads, which the CPU coordinates using `round-robin`.
+    However, python's  `Global Interpreter Lock` (GIL) prevents these threads from acting concurrently, it might perform context switching when IO operation occurs but there's no control for that.
+
+
+3.  Asynchronous IO - running all tasks on a single thread, while IO operations won't block the progress of the program, while code execution is committed by an   `event loop` that `selects` between attached `coroutines`.
+    This is highly efficient in resources consumption when compared to multithreading and multiprocessing, but it requires some modifications to the original code.
+    `Blocking` IO statements can hog the event loop and the code will not be concurrent.
+    `gevent` allows programmers to write seemingly regular "blocking" python code, but it will enforce asynchronous IO compliance by `monkey patching`
+
 ## File structure
 ```
 
