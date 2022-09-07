@@ -1,21 +1,19 @@
 [tool.poetry]
 name = "robotframework-gevent"
-version = "0.1.0"
+version = "0.1.a"
 description = "Run keywords asynchronously with the power of gevent"
 authors = ["Eldad Uzman <eldadu1985@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [
-    { include = "GeventLibrary", from = "src" },
-    { include = "utests", format = "sdist" },
-    { include = "atests", format = "sdist" },
+    { include = "GeventLibrary", from = "src" }
 ]
 repository = "https://github.com/eldaduzman/robotframework-gevent"
 
 keywords = ["robotframework", "rpa", "automation", "asynchronous"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.8"
 gevent = "^21.12.0"
 robotframework = "^5.0.1"
 robotframework-pythonlibcore = "^3.0.0"
@@ -28,6 +26,7 @@ perflint = "^0.7.3"
 robotframework-requests = "^0.9.3"
 coverage = "^6.4.4"
 cosmic-ray = "^8.3.5"
+tox = "^3.25.1"
 
 
 [build-system]
