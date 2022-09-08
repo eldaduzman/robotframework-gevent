@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  run_tox:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:

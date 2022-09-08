@@ -2,6 +2,10 @@
 Run keywords asynchronously with the power of gevent
 
 ![Coverage Status](./reports/coverage-badge.svg)
+[![Version](https://img.shields.io/pypi/v/robotframework-gevent.svg)](https://pypi.python.org/pypi/robotframework-gevent)
+
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 ## installation:
