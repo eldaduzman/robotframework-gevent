@@ -24,6 +24,7 @@ SOFTWARE.
 # pylint: disable=wrong-import-position
 # pylint: disable=wrong-import-order
 from gevent import monkey
+
 monkey.patch_all(thread=False)
 from typing import Any, List
 
@@ -39,24 +40,24 @@ class GeventLibrary(DynamicCore):
 
     Each keywords gets its own greenlet so that they are executed to completion.
 
-    ```
-    *** Settings ***
-    Library             GeventLibrary
 
+    | *** Settings ***
+    | Library             GeventLibrary
+    |
+    |
+    | *** Test Cases ***
+    | Test1
+    |     Log    Hello World
+    |     Create Gevent Bundle    alias=alias1
+    |     Add Coroutine           Sleep    1s    alias=alias1
+    |     Add Coroutine           Sleep    1s    alias=alias1
+    |     ${values}               Run Coroutines    alias=alias1
+    |     Log Many                @{values}
 
-    *** Test Cases ***
-    Test1
-        Log    Hello World
-        Create Gevent Bundle    alias=alias1
-        Add Coroutine           Sleep    1s    alias=alias1
-        Add Coroutine           Sleep    1s    alias=alias1
-        ${values}               Run Coroutines    alias=alias1
-        Log Many                @{values}
-    ```
     """
 
     libraries: List[Any] = [GeventKeywords()]
-    ROBOT_LIBRARY_SCOPE = "TEST SUITE"
+    ROBOT_LIBRARY_SCOPE = "Global"
     ROBOT_LISTENER_API_VERSION = 2
 
     def __init__(self):

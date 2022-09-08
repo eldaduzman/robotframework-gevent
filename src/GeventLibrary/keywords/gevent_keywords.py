@@ -59,7 +59,9 @@ class GeventKeywords:
         |     Create Gevent Bundle    alias=alias1
 
         Args:
-            alias (str, optional): Name of alias. Defaults to None.
+
+            ``alias`` <str, optional> Name of alias. Defaults to None.
+
         """
         alias = alias or str(uuid4())
         if alias in self._active_gevent_bundles:
@@ -78,10 +80,14 @@ class GeventKeywords:
         |       Add Coroutine    Sleep    1s    alias=alias1
         |       Add Coroutine    Convert To Lower Case    UPPER
         Args:
-            keyword_name (str): Explicit robotframework keyword name
-            *args (args): all positional arguments of the keywords
-            alias (str, optional): Name of alias. Defaults to None.
-            **args (kwargs): all keyword arguments of the keywords
+
+            ``keyword_name`` <str> Explicit robotframework keyword name
+
+            ``*args``        <args> all positional arguments of the keywords
+
+            ``alias``        <str, optional> Name of alias. Defaults to None.
+            
+            ``**kwargs``       <kwargs> all keyword arguments of the keywords
         """
         self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
 
@@ -90,13 +96,17 @@ class GeventKeywords:
         """Runs all the coroutines asynchronously.
 
         Args:
-            alias (str, optional): Name of alias. Defaults to None.
-            alias (int, optional): Coroutines execution timeout in seconds. Defaults to 200.
+
+            ``alias``       <str, optional> Name of alias. Defaults to None.
+
+            ``timeout``     <int, optional> Coroutines execution timeout in seconds. Defaults to 200.
+
 
             |    ${values}    Run Coroutines    alias=alias1
 
         Returns:
-            list: all returned values from coroutines by order
+
+            ``list`` <List[Any]>   all returned values from coroutines by order
         """
         coros = self[alias]
         if len(coros) == 0:
