@@ -1,7 +1,7 @@
 # robotframework-gevent
 Run keywords asynchronously with the power of gevent
 
-![Codecov](https://img.shields.io/codecov/c/github/eldaduzman/robotframework-gevent?style=flat-square)
+![Coverage Status](./reports/coverage-badge.svg)
 
 
 ## installation:
@@ -23,7 +23,7 @@ Library             RequestsLibrary
 
 *** Test Cases ***
 Test1
-    [Documentation]    Simpla test flow with gevent greenlets
+    [Documentation]    Simple test flow with gevent greenlets
     Log    Hello World
     Create Gevent Bundle    alias=alias1 # Create a bundle of coroutines
     Sleep    10s    alias=alias1    # run your synchronous keyword
