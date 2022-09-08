@@ -10,7 +10,7 @@ Library             RequestsLibrary
 
 *** Test Cases ***
 Test1
-    [Documentation]    Simpla test flow with gevent greenlets
+    [Documentation]    Simple test flow with gevent greenlets
     Log    Hello World
     Create Gevent Bundle    alias=alias1
     Sleep    10s    alias=alias1    # synchronous keyword

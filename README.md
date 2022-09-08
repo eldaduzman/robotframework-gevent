@@ -1,11 +1,11 @@
 # robotframework-gevent
 Run keywords asynchronously with the power of gevent
 
-![stable](https://img.shields.io/static/v1?label=version&message=0.1.a&color=red)
-![stable](https://img.shields.io/static/v1?label=status&message=alpha&color=red)
-![stable](https://img.shields.io/static/v1?label=codecov&message=100%&color=greene)
-![stable](https://img.shields.io/static/v1?label=mutant-score&message=0.65&color=orange)
+![Coverage Status](./reports/coverage-badge.svg)
+[![Version](https://img.shields.io/pypi/v/robotframework-gevent.svg)](https://pypi.python.org/pypi/robotframework-gevent)
 
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 ## installation:
@@ -27,7 +27,7 @@ Library             RequestsLibrary
 
 *** Test Cases ***
 Test1
-    [Documentation]    Simpla test flow with gevent greenlets
+    [Documentation]    Simple test flow with gevent greenlets
     Log    Hello World
     Create Gevent Bundle    alias=alias1 # Create a bundle of coroutines
     Sleep    10s    alias=alias1    # run your synchronous keyword
