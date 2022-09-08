@@ -1,8 +1,7 @@
 # robotframework-gevent
 Run keywords asynchronously with the power of gevent
 
-![Coverage Status]([[./reports/coverage-badge.svg](https://github.com/eldaduzman/robotframework-gevent/blob/main/docs/badges/coverage-badge.svg)])
-[![Version](https://img.shields.io/pypi/v/robotframework-gevent.svg)](https://pypi.python.org/pypi/robotframework-gevent)
+![Coverage](https://raw.githubusercontent.com/eldaduzman/robotframework-gevent/main/docs/badges/coverage-badge.svg)  [![Version](https://img.shields.io/pypi/v/robotframework-gevent.svg)](https://pypi.python.org/pypi/robotframework-gevent)
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
