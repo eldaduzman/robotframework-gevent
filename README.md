@@ -1,11 +1,7 @@
 # robotframework-gevent
 Run keywords asynchronously with the power of gevent
 
-![stable](https://img.shields.io/static/v1?label=version&message=0.1.a&color=red)
-![stable](https://img.shields.io/static/v1?label=status&message=alpha&color=red)
-![stable](https://img.shields.io/static/v1?label=codecov&message=100%&color=greene)
-![stable](https://img.shields.io/static/v1?label=mutant-score&message=0.65&color=orange)
-
+![Codecov](https://img.shields.io/codecov/c/github/eldaduzman/robotframework-gevent?style=flat-square)
 
 
 ## installation:
