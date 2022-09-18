@@ -26,7 +26,27 @@ Test1
     Status Should Be    200    ${jsonplaceholder_resp}
     Should Be Equal As Strings    1    ${jsonplaceholder_resp.json()['userId']}
 
+Test2
+    [Documentation]    Simple test flow with gevent greenlets
+    Create Gevent Bundle    alias=alias2
+    Add Coroutine    Wrapper1    alias=alias2
+    Add Coroutine    Wrapper2    alias=alias2
+    Add Coroutine    Sleep    10s    alias=alias2
+    Add Coroutine    Sleep    10s    alias=alias2
+    Add Coroutine    Sleep    10s    alias=alias2
+    Add Coroutine    Sleep    15s    alias=alias2
+    ${values}    Run Coroutines    alias=alias2
+    Log Many    @{values}
+
 
 *** Keywords ***
+Wrapper1
+    Sleep    10s
+    Log    Hi
+    RETURN    Some output
+
+Wrapper2
+    Sleep    10s
+
 Sleep Wrapper
-    Sleep    1s
+    Sleep    10s

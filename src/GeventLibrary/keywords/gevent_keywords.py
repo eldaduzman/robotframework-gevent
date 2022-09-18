@@ -1,18 +1,17 @@
 """gevent keywords"""
-
 from collections import OrderedDict
+from copy import copy
 from typing import List, Optional
 from typing import OrderedDict as od
 from uuid import uuid4
 
 from gevent import joinall, spawn
-from GeventLibrary.exceptions import (
-    AliasAlreadyCreated,
-    NoBundleCreated,
-    BundleHasNoCoroutines,
-)
+from GeventLibrary.exceptions import (AliasAlreadyCreated,
+                                      BundleHasNoCoroutines, NoBundleCreated)
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn
+from robot.running.context import EXECUTION_CONTEXTS
+from robot.utils import safe_str
 
 
 class RobotKeywordCoroutine:
@@ -35,6 +34,22 @@ class RobotKeywordCoroutine:
             *self._args,
             *[f"{key}={value}" for key, value in self._kwargs.items()],
         ]
+
+
+def _print_keyword(keyword_item, msg, built_in):
+    """log the executed keyword coroutine"""
+    built_in.log(
+        "\n\t".join(
+            [
+                '********************************',
+                # get_timestamp(),
+                msg,
+                f"{keyword_item.libname}.{keyword_item.kwname}   {'   '.join([safe_str(a) for a in keyword_item.args])}",
+                keyword_item.doc,
+                keyword_item.result.status,
+            ]
+        )
+    )
 
 
 class GeventKeywords:
@@ -83,10 +98,10 @@ class GeventKeywords:
 
             ``keyword_name`` <str> Explicit robotframework keyword name
 
-            ``*args``        <args> all positional arguments of the keywords
+            ``args``        <args> all positional arguments of the keywords
 
             ``alias``        <str, optional> Name of alias. Defaults to None.
-            
+
             ``**kwargs``       <kwargs> all keyword arguments of the keywords
         """
         self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
@@ -114,6 +129,19 @@ class GeventKeywords:
                 "The given bundle has no coroutines, please use `Add Coroutine` keyword"
             )
         built_in = BuiltIn()
+
+        ctx = EXECUTION_CONTEXTS.current
+        ## monkey
+        start_keyword_placer = copy(ctx.output.start_keyword)
+        end_keyword_placer = copy(ctx.output.end_keyword)
+
+        ctx.output.start_keyword = lambda kw: _print_keyword(
+            kw, "Started Keyword Coroutine", built_in
+        )
+        ctx.output.end_keyword = lambda kw: _print_keyword(
+            kw, "Completed Keyword Coroutine", built_in
+        )
+        ## end monkey
         jobs = [
             spawn(
                 built_in.run_keyword,
@@ -124,11 +152,19 @@ class GeventKeywords:
         ]
 
         greenlets = joinall(jobs, timeout=timeout)
-        coros.clear()
+
+        # unmonkey
+        ctx.output.start_keyword = start_keyword_placer
+        ctx.output.end_keyword = end_keyword_placer
+        ## end unmonkey
+
         # check for exceptions...
         for greenlet in greenlets:
             if greenlet.exception:
                 raise greenlet.exception
+
+        coros.clear()
+
         return [job.value for job in jobs]
 
     def __len__(self):
