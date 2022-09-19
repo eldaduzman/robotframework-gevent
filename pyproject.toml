@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "robotframework-gevent"
-version = "0.2-beta.1"
+version = "0.2-beta.2"
 description = "Run keywords asynchronously with the power of gevent"
 authors = ["Eldad Uzman <eldadu1985@gmail.com>"]
 license = "MIT"
