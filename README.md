@@ -1,7 +1,7 @@
 # robotframework-gevent
 Run keywords asynchronously with the power of gevent
 
-![Coverage](https://raw.githubusercontent.com/eldaduzman/robotframework-gevent/main/docs/badges/coverage-badge.svg)  [![Version](https://img.shields.io/pypi/v/robotframework-gevent.svg)](https://pypi.python.org/pypi/robotframework-gevent)
+![Coverage](./docs/badges/coverage-badge.svg) ![MutationScore](./docs/badges/mutscore.svg) ![Pylint](./docs/badges/pylint.svg)  [![Version](https://img.shields.io/pypi/v/robotframework-gevent.svg)](https://pypi.python.org/pypi/robotframework-gevent)
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -56,11 +56,21 @@ Sleep Wrapper
 
 ```
 
+
 See -  [Keyword Documentation](https://eldaduzman.github.io/robotframework-gevent/GeventLibrary.html)
 ### run test:
 ```
 >>> robot simple-test.robot
 ```
+### Possible result
+
+After test is completed go to `log.html`:
+
+![](./docs/images/Possible-Log-File.png)
+
+
+Owing to the fact that keywords are executed asynchronously, we cannot know the order of keyword execution, so instead they are printed in a table format
+
 ## Motivation
 
 Modern software architecture is `event driven`, with many background process.
@@ -124,8 +134,8 @@ Concurrency can be achieved in 3 different ways:
 ### `mypy` used for type hinting [read](https://pypi.org/project/mypy/),
 ### `robocop` static code analyzer for robotframework [read](https://pypi.org/project/robotframework-robocop/),
 ### `perflint` pylint extension for performance linting [read](https://betterprogramming.pub/use-perflint-a-performance-linter-for-python-eae8e54f1e99)
+### `cosmic-ray` Python tool for mutation testing [read](https://python.plainenglish.io/python-mutation-testing-with-cosmic-ray-4b78eb9e0676)
 
 ## links
 1. [Robotframework](https://robotframework.org/)
 2. [gevent](http://www.gevent.org/)
-3. [Mutation testing with cosmic-ray](https://python.plainenglish.io/python-mutation-testing-with-cosmic-ray-4b78eb9e0676)

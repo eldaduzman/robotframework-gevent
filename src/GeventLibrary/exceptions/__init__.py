@@ -2,12 +2,12 @@
 
 
 class NoBundleCreated(Exception):
-    pass
+    """exception when there are no bundles in the library"""
 
 
 class BundleHasNoCoroutines(Exception):
-    pass
+    """exception when bundle contains no coroutines"""
 
 
 class AliasAlreadyCreated(Exception):
-    pass
+    """exception bundle alias already exists"""
