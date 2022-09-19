@@ -5,7 +5,7 @@ from typing import List, Optional
 from typing import OrderedDict as od
 from uuid import uuid4
 
-from gevent import joinall, spawn
+from gevent import joinall, spawn, pool
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn
 from robot.running.context import EXECUTION_CONTEXTS
@@ -149,7 +149,13 @@ class GeventKeywords:
         self._active_gevent_bundles[alias] = []
 
     @keyword
-    def add_coroutine(self, keyword_name: str, *args, alias: str = None, **kwargs):
+    def add_coroutine(
+        self,
+        keyword_name: str,
+        *args,
+        alias: str = None,
+        **kwargs,
+    ):
         """Adding a new keyword to be a coroutine of the bundle,
         If no bundle alias is given, the last created bundle will be used by default
         Examples:
@@ -159,25 +165,29 @@ class GeventKeywords:
         |       Add Coroutine    Convert To Lower Case    UPPER
         Args:
 
-            ``keyword_name`` <str> Explicit robotframework keyword name
+            ``keyword_name``            <str> Explicit robotframework keyword name
 
-            ``*args``        <args> all positional arguments of the keywords
+            ``*args``                   <args> all positional arguments of the keywords
 
-            ``alias``        <str, optional> Name of alias. Defaults to None.
+            ``alias``                   <str, optional> Name of alias. Defaults to None.
 
-            ``**kwargs``       <kwargs> all keyword arguments of the keywords
+            ``**kwargs``                <kwargs> all keyword arguments of the keywords
         """
         self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
 
     @keyword
-    def run_coroutines(self, alias: str = None, timeout: int = 200) -> List:
+    def run_coroutines(
+        self, alias: str = None, timeout: int = 200, gevent_pool_size: int = 0
+    ) -> List:
         """Runs all the coroutines asynchronously.
 
         Args:
 
-            ``alias``       <str, optional> Name of alias. Defaults to None.
+            ``alias``               <str, optional> Name of alias. Defaults to None.
 
-            ``timeout``     <int, optional> Coroutines execution timeout in seconds. Defaults to 200.
+            ``timeout``             <int, optional> Coroutines execution timeout in seconds. Defaults to 200.
+
+            ``gevent_pool_size``    <int> Size of gevent pool, 0 for using spawn without pooling. Defaults to 0.
 
 
             |    ${values}    Run Coroutines    alias=alias1
@@ -186,6 +196,10 @@ class GeventKeywords:
 
             ``list`` <List[Any]>   all returned values from coroutines by order
         """
+        if gevent_pool_size < 0:
+            raise ValueError(
+                f"'gevent_pool_size' must be a non negative value, got {gevent_pool_size}"
+            )
         coros = self[alias]
         if len(coros) == 0:
             raise BundleHasNoCoroutines(
@@ -201,8 +215,11 @@ class GeventKeywords:
         ctx.output.start_keyword = lambda kw: _start_keyword(kw, built_in)
         ctx.output.end_keyword = lambda kw: _end_keyword(kw, built_in)
         ## end monkey
+        spawn_callable = spawn
+        if gevent_pool_size > 0:
+            spawn_callable = pool.Pool(gevent_pool_size).spawn
         jobs = [
-            spawn(
+            spawn_callable(
                 built_in.run_keyword,
                 coro.keyword_name,
                 *coro.all_args,

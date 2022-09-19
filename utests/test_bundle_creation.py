@@ -96,7 +96,8 @@ class TestInstanceCreation(TestCase):
         with mock.patch(
             "robot.libraries.BuiltIn.BuiltIn.run_keyword", returned_Value=1
         ), mock.patch(
-            "robot.running.context.ExecutionContexts.current", returned_Value="not null..."
+            "robot.running.context.ExecutionContexts.current",
+            returned_Value="not null...",
         ):
             gevent_library_instance = GeventKeywords()
             gevent_library_instance.create_gevent_bundle(alias="my_alias")
@@ -108,13 +109,74 @@ class TestInstanceCreation(TestCase):
             gevent_library_instance.run_coroutines()
             self.assertEqual(0, len(coros))
 
+    def test_using_gevent_pool_positive_number(self):
+        """When using a positive number for poolsize"""
+        with mock.patch(
+            "robot.libraries.BuiltIn.BuiltIn.run_keyword", returned_Value=1
+        ), mock.patch(
+            "robot.running.context.ExecutionContexts.current",
+            returned_Value="not null...",
+        ):
+            gevent_library_instance = GeventKeywords()
+            gevent_library_instance.create_gevent_bundle(alias="my_alias")
+            gevent_library_instance.add_coroutine("Log", "Hello World1")
+            gevent_library_instance.add_coroutine("Log", "Hello World2")
+
+            coros = gevent_library_instance["my_alias"]
+            self.assertEqual(2, len(coros))
+            gevent_library_instance.run_coroutines(gevent_pool_size=3)
+            self.assertEqual(0, len(coros))
+
+    def test_using_gevent_pool_zero(self):
+        """When using a positive number for poolsize"""
+        with mock.patch(
+            "robot.libraries.BuiltIn.BuiltIn.run_keyword", returned_Value=1
+        ), mock.patch(
+            "robot.running.context.ExecutionContexts.current",
+            returned_Value="not null...",
+        ):
+            gevent_library_instance = GeventKeywords()
+            gevent_library_instance.create_gevent_bundle(alias="my_alias")
+            gevent_library_instance.add_coroutine("Log", "Hello World1")
+            gevent_library_instance.add_coroutine("Log", "Hello World2")
+
+            coros = gevent_library_instance["my_alias"]
+            self.assertEqual(2, len(coros))
+            gevent_library_instance.run_coroutines(gevent_pool_size=0)
+            self.assertEqual(0, len(coros))
+
+    def test_using_gevent_pool_negative_number(self):
+        """When using a negative number for poolsize"""
+        with mock.patch(
+            "robot.libraries.BuiltIn.BuiltIn.run_keyword", returned_Value=1
+        ), mock.patch(
+            "robot.running.context.ExecutionContexts.current",
+            returned_Value="not null...",
+        ), self.assertRaises(
+            ValueError
+        ) as exp:
+            gevent_library_instance = GeventKeywords()
+            gevent_library_instance.create_gevent_bundle(alias="my_alias")
+            gevent_library_instance.add_coroutine("Log", "Hello World1")
+            gevent_library_instance.add_coroutine("Log", "Hello World2")
+
+            coros = gevent_library_instance["my_alias"]
+            self.assertEqual(2, len(coros))
+            gevent_library_instance.run_coroutines(gevent_pool_size=-3)
+            self.assertEqual(0, len(coros))
+        self.assertEqual(
+            str(exp.exception),
+            "'gevent_pool_size' must be a non negative value, got -3",
+        )
+
     def test_order_of_returned_values(self):
         """After the bundle is executed, the coroutines should be deleted."""
         side_effect = [1, 2, "string", {"set"}]
         with mock.patch(
             "robot.libraries.BuiltIn.BuiltIn.run_keyword", side_effect=side_effect
         ), mock.patch(
-            "robot.running.context.ExecutionContexts.current", returned_Value="not null..."
+            "robot.running.context.ExecutionContexts.current",
+            returned_Value="not null...",
         ):
             gevent_library_instance = GeventKeywords()
             gevent_library_instance.create_gevent_bundle(alias="my_alias")
