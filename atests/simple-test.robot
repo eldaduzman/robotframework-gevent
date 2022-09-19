@@ -35,7 +35,7 @@ Test2
     Add Coroutine    Sleep    10s    alias=alias2
     Add Coroutine    Sleep    10s    alias=alias2
     Add Coroutine    Sleep    15s    alias=alias2
-    ${values}    Run Coroutines    alias=alias2
+    ${values}    Run Coroutines    alias=alias2    gevent_pool_size=40
     Log Many    @{values}
 
 
