@@ -1,18 +1,21 @@
 """gevent keywords"""
-
 from collections import OrderedDict
+from copy import copy
 from typing import List, Optional
 from typing import OrderedDict as od
 from uuid import uuid4
 
 from gevent import joinall, spawn
-from GeventLibrary.exceptions import (
-    AliasAlreadyCreated,
-    NoBundleCreated,
-    BundleHasNoCoroutines,
-)
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn
+from robot.running.context import EXECUTION_CONTEXTS
+from robot.utils import safe_str
+
+from GeventLibrary.exceptions import (
+    AliasAlreadyCreated,
+    BundleHasNoCoroutines,
+    NoBundleCreated,
+)
 
 
 class RobotKeywordCoroutine:
@@ -37,11 +40,86 @@ class RobotKeywordCoroutine:
         ]
 
 
+def _start_keyword(keyword_item, built_in):
+    """listener for starting a keyword - drop it as HTML table"""
+    html_text = f"""
+            <style>
+                #demo table, #demo th, #demo td{{
+                    border: 1px dotted black;
+                    border-collapse: collapse;
+                    table-layout: auto;
+                }}
+            </style>
+            <table id="demo" style="width:100%">
+                <tr>
+                    <th style="width:10%">Event</th>
+                    <th style="width:10%">Keyword</th>
+                    <th style="width:10%">Args</th>
+                    <th style="width:10%">Doc</th>
+                </tr>
+                <tr>
+                    <td style="text-align:center">Started</td>
+                    <td style="text-align:center">{keyword_item.name}</td>
+                    <td style="text-align:center">{"   ".join([safe_str(a) for a in keyword_item.args])}</td>
+                    <td style="text-align:center">{keyword_item.doc}</td>
+                </tr>
+            </table>
+
+            """
+    built_in.log(html_text, html=True)
+
+
+def _end_keyword(keyword_item, built_in):
+    """listener for ending a keyword - drop it as HTML table"""
+    html_text = f"""
+            <style>
+                #demo table, #demo th, #demo td{{
+                    border: 1px dotted black;
+                    border-collapse: collapse;
+                    table-layout: auto;
+                }}
+                #statusfail{{
+                    border: 1px dotted black;
+                    color:red;
+                    bgcolor:gray;
+                    text-align:center;
+                    border-collapse: collapse;
+                    table-layout: auto;
+                    }}
+                #statuspass{{
+                    border: 1px dotted black;
+                    color:green;
+                    bgcolor:gray;
+                    text-align:center;
+                    border-collapse: collapse;
+                    table-layout: auto;
+                    }}
+            </style>
+            <table id="demo" style="width:100%">
+                <tr>
+                    <th style="width:10%">Event</th>
+                    <th style="width:10%">Keyword</th>
+                    <th style="width:10%">Args</th>
+                    <th style="width:10%">Doc</th>
+                    <th style="width:10%">Status</th>
+                </tr>
+                <tr>
+                    <td style="text-align:center">Completed</td>
+                    <td style="text-align:center">{keyword_item.name}</td>
+                    <td style="text-align:center">{"   ".join([safe_str(a) for a in keyword_item.args])}</td>
+                    <td style="text-align:center">{keyword_item.doc}</td>
+                    <td id="status{keyword_item.result.status.lower()}">{keyword_item.result.status}</td>
+                </tr>
+            </table>
+
+            """
+    built_in.log(html_text, html=True)
+
+
 class GeventKeywords:
     """class defining gevent keywords"""
 
     ROBOT_LIBRARY_SCOPE = "GLOBAL"
-    ROBOT_LISTENER_API_VERSION = 2
 
     def __init__(self) -> None:
         self._active_gevent_bundles: od[
@@ -86,7 +164,7 @@ class GeventKeywords:
             ``*args``        <args> all positional arguments of the keywords
 
             ``alias``        <str, optional> Name of alias. Defaults to None.
-            
+
             ``**kwargs``       <kwargs> all keyword arguments of the keywords
         """
         self[alias].append(RobotKeywordCoroutine(keyword_name, *args, **kwargs))
@@ -114,6 +192,15 @@ class GeventKeywords:
                 "The given bundle has no coroutines, please use `Add Coroutine` keyword"
             )
         built_in = BuiltIn()
+
+        ctx = EXECUTION_CONTEXTS.current
+        ## monkey
+        start_keyword_placer = copy(ctx.output.start_keyword)
+        end_keyword_placer = copy(ctx.output.end_keyword)
+
+        ctx.output.start_keyword = lambda kw: _start_keyword(kw, built_in)
+        ctx.output.end_keyword = lambda kw: _end_keyword(kw, built_in)
+        ## end monkey
         jobs = [
             spawn(
                 built_in.run_keyword,
@@ -124,11 +211,19 @@ class GeventKeywords:
         ]
 
         greenlets = joinall(jobs, timeout=timeout)
-        coros.clear()
+
+        # unmonkey
+        ctx.output.start_keyword = start_keyword_placer
+        ctx.output.end_keyword = end_keyword_placer
+        ## end unmonkey
+
         # check for exceptions...
         for greenlet in greenlets:
             if greenlet.exception:
                 raise greenlet.exception
+
+        coros.clear()
+
         return [job.value for job in jobs]
 
     def __len__(self):

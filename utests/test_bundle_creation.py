@@ -95,6 +95,8 @@ class TestInstanceCreation(TestCase):
         """After the bundle is executed, the coroutines should be deleted."""
         with mock.patch(
             "robot.libraries.BuiltIn.BuiltIn.run_keyword", returned_Value=1
+        ), mock.patch(
+            "robot.running.context.ExecutionContexts.current", returned_Value="not null..."
         ):
             gevent_library_instance = GeventKeywords()
             gevent_library_instance.create_gevent_bundle(alias="my_alias")
@@ -111,6 +113,8 @@ class TestInstanceCreation(TestCase):
         side_effect = [1, 2, "string", {"set"}]
         with mock.patch(
             "robot.libraries.BuiltIn.BuiltIn.run_keyword", side_effect=side_effect
+        ), mock.patch(
+            "robot.running.context.ExecutionContexts.current", returned_Value="not null..."
         ):
             gevent_library_instance = GeventKeywords()
             gevent_library_instance.create_gevent_bundle(alias="my_alias")
