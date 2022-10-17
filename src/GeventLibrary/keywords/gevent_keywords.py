@@ -243,6 +243,27 @@ class GeventKeywords:
 
         return [job.value for job in jobs]
 
+    @keyword
+    def clear_bundle(self, alias: str = None):
+        """
+        removes a single coroutines bundle from the list
+
+        Args:
+            ``alias``               <str, optional> Name of alias. Defaults to None.
+        """
+        try:
+            alias = alias or list(self._active_gevent_bundles.items())[-1][0]
+            self._active_gevent_bundles.pop(alias).clear()
+        except KeyError as ex:
+            raise LookupError(f"Bundle with alias {alias} was not found") from ex
+
+    @keyword
+    def clear_all_bundles(self):
+        """
+        removes all coroutines bundles from the list
+        """
+        self._active_gevent_bundles.clear()
+
     def __len__(self):
         return len(self._active_gevent_bundles)
 

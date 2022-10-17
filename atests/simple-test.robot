@@ -7,6 +7,7 @@ Library             String
 Library             GeventLibrary
 Library             RequestsLibrary
 
+Suite Teardown    Clear All Bundles
 
 *** Test Cases ***
 Test1

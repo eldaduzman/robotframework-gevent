@@ -220,6 +220,59 @@ class TestInstanceCreation(TestCase):
                 "some value error...",
             )
 
+    def test_remove_one_bundle(self):
+        gevent_library_instance = GeventKeywords()
+        gevent_library_instance.create_gevent_bundle(alias="my_alias1")
+        gevent_library_instance.add_coroutine("Log", "Hello World1", alias="my_alias1")
+        gevent_library_instance.add_coroutine("Log", "Hello World2", alias="my_alias1")
+        gevent_library_instance.add_coroutine("Log", "Hello World3", alias="my_alias1")
+        gevent_library_instance.add_coroutine("Log", "Hello World4", alias="my_alias1")
+        gevent_library_instance.add_coroutine("Log", "Hello World5", alias="my_alias1")
+        gevent_library_instance.add_coroutine("Log", "Hello World6", alias="my_alias1")
+        gevent_library_instance.create_gevent_bundle(alias="my_alias2")
+        gevent_library_instance.add_coroutine("Log", "Hello World1", alias="my_alias2")
+        gevent_library_instance.add_coroutine("Log", "Hello World2", alias="my_alias2")
+        gevent_library_instance.add_coroutine("Log", "Hello World3", alias="my_alias2")
+        gevent_library_instance.add_coroutine("Log", "Hello World4", alias="my_alias2")
+        self.assertEqual(2, len(gevent_library_instance))
+        gevent_library_instance.clear_bundle(alias="my_alias1")
+        self.assertEqual(1, len(gevent_library_instance))
+        coros = gevent_library_instance["my_alias2"]
+        self.assertEqual(4, len(coros))
+        with self.assertRaises(LookupError) as exp:
+            coros = gevent_library_instance["my_alias1"]
+        self.assertEqual(
+            str(exp.exception),
+            "Bundle with alias my_alias1 was not found",
+        )
+
+    def test_remove_all_bundles(self):
+        gevent_library_instance = GeventKeywords()
+        gevent_library_instance.create_gevent_bundle(alias="my_alias1")
+        gevent_library_instance.add_coroutine("Log", "Hello World1", alias="my_alias1")
+        gevent_library_instance.add_coroutine("Log", "Hello World2", alias="my_alias1")
+        gevent_library_instance.add_coroutine("Log", "Hello World3", alias="my_alias1")
+        gevent_library_instance.add_coroutine("Log", "Hello World4", alias="my_alias1")
+        gevent_library_instance.add_coroutine("Log", "Hello World5", alias="my_alias1")
+        gevent_library_instance.add_coroutine("Log", "Hello World6", alias="my_alias1")
+        gevent_library_instance.create_gevent_bundle(alias="my_alias2")
+        gevent_library_instance.add_coroutine("Log", "Hello World1", alias="my_alias2")
+        gevent_library_instance.add_coroutine("Log", "Hello World2", alias="my_alias2")
+        gevent_library_instance.add_coroutine("Log", "Hello World3", alias="my_alias2")
+        gevent_library_instance.add_coroutine("Log", "Hello World4", alias="my_alias2")
+        self.assertEqual(2, len(gevent_library_instance))
+        gevent_library_instance.clear_all_bundles()
+
+        self.assertEqual(0, len(gevent_library_instance))
+
+    def test_remove_a_bundle_that_doesnt_exist(self):
+        gevent_library_instance = GeventKeywords()
+        with self.assertRaises(LookupError) as exp:
+            gevent_library_instance.clear_bundle(alias="my_alias1")
+        self.assertEqual(
+            str(exp.exception),
+            "Bundle with alias my_alias1 was not found",
+        )
 
 if __name__ == "__main__":
     main()
