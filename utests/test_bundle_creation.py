@@ -201,6 +201,25 @@ class TestInstanceCreation(TestCase):
             "Bundle with alias my_alias4 was not found",
         )
 
+    def test_keyword_raise_exception(self):
+        """After the bundle is executed, the coroutines should be deleted."""
+        with mock.patch(
+            "robot.libraries.BuiltIn.BuiltIn.run_keyword",
+            side_effect=ValueError("some value error..."),
+        ), mock.patch(
+            "robot.running.context.ExecutionContexts.current",
+            returned_Value="not null...",
+        ):
+            gevent_library_instance = GeventKeywords()
+            gevent_library_instance.create_gevent_bundle(alias="my_alias")
+            gevent_library_instance.add_coroutine("Convert To Integer", "1")
+            with self.assertRaises(ValueError) as exp:
+                gevent_library_instance.run_coroutines()
+            self.assertEqual(
+                str(exp.exception),
+                "some value error...",
+            )
+
 
 if __name__ == "__main__":
     main()
