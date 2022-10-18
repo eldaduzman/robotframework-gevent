@@ -167,7 +167,7 @@ class GeventKeywords:
 
             ``keyword_name``            <str> Explicit robotframework keyword name
 
-            ``*args``                   <args> all positional arguments of the keywords
+            ``*args``                   <args> all positional arguments of the keywords.
 
             ``alias``                   <str, optional> Name of alias. Defaults to None.
 
