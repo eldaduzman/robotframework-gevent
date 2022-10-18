@@ -69,11 +69,15 @@ See -  [Keyword Documentation](https://eldaduzman.github.io/robotframework-geven
 
 After test is completed go to `log.html`:
 
-![](./docs/images/Possible-Log-File.png)
+![](https://raw.githubusercontent.com/eldaduzman/robotframework-gevent/main/docs/images/Possible-Log-File.png)
 
 
 Owing to the fact that keywords are executed asynchronously, we cannot know the order of keyword execution, so instead they are printed in a table format
 
+
+### For more examples
+
+go to [examples](https://github.com/eldaduzman/robotframework-gevent/tree/main/examples)
 ## Motivation
 
 Modern software architecture is `event driven`, with many background process.
