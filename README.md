@@ -31,7 +31,7 @@ Library             RequestsLibrary
 Test1
     [Documentation]    Simple test flow with gevent greenlets
     Log    Hello World
-    Create Gevent Bundle    alias=alias1 # Create a bundle of coroutines
+    Create Gevent Bundle    alias=alias1  # Create a bundle of coroutines
     Sleep    10s    alias=alias1    # run your synchronous keyword
     # register all your keywords as coroutines to the gevent bundle
     Add Coroutine    Sleep Wrapper    alias=alias1
