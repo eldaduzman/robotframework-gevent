@@ -17,7 +17,7 @@ Run keywords asynchronously with the power of gevent
 
 ## Usage:
 
-```
+```robotframework
 # simple-test.robot
 *** Settings ***
 
