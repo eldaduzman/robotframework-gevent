@@ -27,3 +27,11 @@ jobs:
 
       - name: test with tox
         run: tox
+
+      - name: Test Reporter
+        uses: dorny/test-reporter@v1.6.0
+        with:
+          name: Acceptance Tests
+          path: ./TEST_-*.xml
+          reporter: jest-junit
+

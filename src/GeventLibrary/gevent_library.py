@@ -54,6 +54,15 @@ class GeventLibrary(DynamicCore):
     |     ${values}               Run Coroutines    alias=alias1
     |     Log Many                @{values}
 
+    == Calling concurrent keywords ==
+    === Multiprocessing ===
+    Multiprocessing containing code will not result in error, but waiting for process to end is blocking and the event loop will be hanging
+    === Multithreading ===
+    Multithreading containing code will not result in error, but waiting for process to end is blocking and the event loop will be hanging
+    === gevent ===
+    gevent containing code will work properly in a bundle and will be concurrent to the other coroutines.
+    === asyncio ===
+    asyncio containing code will work properly in a bundle and will be concurrent to the other coroutines.
     """
 
     libraries: List[Any] = [GeventKeywords()]
