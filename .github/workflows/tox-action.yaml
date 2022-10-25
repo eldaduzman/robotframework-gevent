@@ -33,5 +33,5 @@ jobs:
         with:
           name: Acceptance Tests
           path: TEST_*.xml
-          reporter: xunit
+          reporter: jest-xunit
 
