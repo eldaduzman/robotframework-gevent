@@ -31,6 +31,6 @@ jobs:
       - name: Test Reporter
         uses: actions/upload-artifact@v1
         with:
-          name: rf-tests-report-${{ matrix.os }}-${{ matrix.python-version }}
+          name: rf-tests-report-${{ matrix.os }}-${{ matrix.python_version }}-${{ matrix.rbf_version }}
           path: ./TEST_GeventLibrary.xml
 
