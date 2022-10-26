@@ -29,9 +29,8 @@ jobs:
         run: tox
 
       - name: Test Reporter
-        uses: phoenix-actions/test-reporting@v8
+        uses: actions/upload-artifact@v1
         with:
-          name: Acceptance Tests
-          path: TEST_*.xml
-          reporter: jest-xunit
+          name: rf-tests-report-${{ matrix.os }}-${{ matrix.python-version }}
+          path: ./TEST_GeventLibrary.xml
 
