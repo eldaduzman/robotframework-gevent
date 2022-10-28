@@ -1,4 +1,7 @@
 # robotframework-gevent
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 Run keywords asynchronously with the power of gevent
 
 
@@ -146,3 +149,24 @@ Concurrency can be achieved in 3 different ways:
 ## links
 1. [Robotframework](https://robotframework.org/)
 2. [gevent](http://www.gevent.org/)
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/MalikMlitat"><img src="https://avatars.githubusercontent.com/u/19836100?v=4?s=100" width="100px;" alt="MalikMlitat"/><br /><sub><b>MalikMlitat</b></sub></a><br /><a href="https://github.com/eldaduzman/robotframework-gevent/commits?author=MalikMlitat" title="Documentation">📖</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
