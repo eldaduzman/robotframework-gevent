@@ -608,11 +608,11 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "robotframework-pythonlibcore"
-version = "3.0.0"
+version = "4.0.0"
 description = "Tools to ease creating larger test libraries for Robot Framework using Python."
 category = "main"
 optional = false
-python-versions = ">=3.6, <4"
+python-versions = ">=3.7, <4"
 
 [[package]]
 name = "robotframework-requests"
@@ -853,7 +853,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "1afbab2a91812c8d809c8190ad1769a1047c3e5380fe09a9cc70fadedf141274"
+content-hash = "429a1b45fac6a304f534d7530bfd60b680b1b61b4a0b35b4dcbfd5c54c70e5ec"
 
 [metadata.files]
 aiohttp = [
@@ -1212,6 +1212,7 @@ gevent = [
     {file = "gevent-22.10.1-cp310-cp310-win_amd64.whl", hash = "sha256:d2ea4ce36c09355379bc038be2bd50118f97d2eb6381b7096de4d05aa4c3e241"},
     {file = "gevent-22.10.1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:3e73c9f71aa2a6795ecbec9b57282b002375e863e283558feb87b62840c8c1ac"},
     {file = "gevent-22.10.1-cp311-cp311-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:5bc3758f0dc95007c1780d28a9fd2150416a79c50f308f62a674d78a845ea1b9"},
+    {file = "gevent-22.10.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:03c10ca0beeab0c6be516030471ea630447ddd1f649d3335e5b162097cd4130a"},
     {file = "gevent-22.10.1-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:fe2c0ff095171c49f78f1d4e6dc89fa58253783c7b6dccab9f1d76e2ee391f10"},
     {file = "gevent-22.10.1-cp36-cp36m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:d18fcc324f39a3b21795022eb47c7752d6e4f4ed89d8cca41f1cc604553265b3"},
     {file = "gevent-22.10.1-cp36-cp36m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:06ea39c70ce166c4a1d4386c7fae96cb8d84ad799527b3378406051104d15443"},
@@ -1523,8 +1524,8 @@ robotframework = [
     {file = "robotframework-6.0.zip", hash = "sha256:db9498dad21369a6702384db057994628cd2cf0a172f5685be941c4bf94e242f"},
 ]
 robotframework-pythonlibcore = [
-    {file = "robotframework-pythonlibcore-3.0.0.tar.gz", hash = "sha256:1bce3b8dfcb7519789ee3a89320f6402e126f6d0a02794184a1ab8cee0e46b5d"},
-    {file = "robotframework_pythonlibcore-3.0.0-py2.py3-none-any.whl", hash = "sha256:af10c2403cd38834988c4ce68ffb6ec6f9b14bd2cd39ecf836d443377c59b7c4"},
+    {file = "robotframework-pythonlibcore-4.0.0.tar.gz", hash = "sha256:6028f4323b2ba30e1521f978e2e959107adb8590b5d3f2923af3c712315d494c"},
+    {file = "robotframework_pythonlibcore-4.0.0-py2.py3-none-any.whl", hash = "sha256:0bea30b41241f155f95f61a52ed622ad1638e06aee58a96f046ddf0f16106689"},
 ]
 robotframework-requests = [
     {file = "robotframework-requests-0.9.3.tar.gz", hash = "sha256:0bbe78b8e7b3ab9bec4968a51bf3795e2671001a780b2b7ebf2ae2152988da35"},
