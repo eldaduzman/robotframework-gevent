@@ -14,8 +14,8 @@ Run keywords asynchronously with the power of gevent
 
 
 ## installation:
-```
->>> pip install robotframework-gevent
+```bash
+pip install robotframework-gevent
 ```
 
 ## Usage:
