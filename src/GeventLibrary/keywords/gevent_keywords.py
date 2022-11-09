@@ -1,4 +1,5 @@
 """gevent keywords"""
+from contextlib import contextmanager
 from collections import OrderedDict
 from copy import copy
 from typing import List, Optional
@@ -38,6 +39,28 @@ class RobotKeywordCoroutine:
             *self._args,
             *[f"{key}={value}" for key, value in self._kwargs.items()],
         ]
+
+
+@contextmanager
+def monkey_patch_robot_ctx():
+    """provides a context manager for safe and succinct coroutine execution context"""
+    built_in = BuiltIn()
+
+    ctx = EXECUTION_CONTEXTS.current
+    ## monkey
+    start_keyword_placer = copy(ctx.output.start_keyword)
+    end_keyword_placer = copy(ctx.output.end_keyword)
+
+    ctx.output.start_keyword = lambda kw: _start_keyword(kw, built_in)
+    ctx.output.end_keyword = lambda kw: _end_keyword(kw, built_in)
+    ## end monkey
+    try:
+        yield built_in
+    finally:
+        # unmonkey
+        ctx.output.start_keyword = start_keyword_placer
+        ctx.output.end_keyword = end_keyword_placer
+    ## end unmonkey
 
 
 def _start_keyword(keyword_item, built_in):
@@ -205,34 +228,20 @@ class GeventKeywords:
             raise BundleHasNoCoroutines(
                 "The given bundle has no coroutines, please use `Add Coroutine` keyword"
             )
-        built_in = BuiltIn()
+        with monkey_patch_robot_ctx() as built_in:
+            spawn_callable = spawn
+            if gevent_pool_size > 0:
+                spawn_callable = pool.Pool(gevent_pool_size).spawn
+            jobs = [
+                spawn_callable(
+                    built_in.run_keyword,
+                    coro.keyword_name,
+                    *coro.all_args,
+                )
+                for coro in coros
+            ]
 
-        ctx = EXECUTION_CONTEXTS.current
-        ## monkey
-        start_keyword_placer = copy(ctx.output.start_keyword)
-        end_keyword_placer = copy(ctx.output.end_keyword)
-
-        ctx.output.start_keyword = lambda kw: _start_keyword(kw, built_in)
-        ctx.output.end_keyword = lambda kw: _end_keyword(kw, built_in)
-        ## end monkey
-        spawn_callable = spawn
-        if gevent_pool_size > 0:
-            spawn_callable = pool.Pool(gevent_pool_size).spawn
-        jobs = [
-            spawn_callable(
-                built_in.run_keyword,
-                coro.keyword_name,
-                *coro.all_args,
-            )
-            for coro in coros
-        ]
-
-        greenlets = joinall(jobs, timeout=timeout)
-
-        # unmonkey
-        ctx.output.start_keyword = start_keyword_placer
-        ctx.output.end_keyword = end_keyword_placer
-        ## end unmonkey
+            greenlets = joinall(jobs, timeout=timeout)
 
         # check for exceptions...
         for greenlet in greenlets:
