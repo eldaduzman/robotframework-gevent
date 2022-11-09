@@ -16,7 +16,7 @@ keywords = ["robotframework", "rpa", "automation", "asynchronous"]
 python = "^3.8"
 gevent = ">=21.12,<23.0"
 robotframework = ">=5.0.1,<7.0.0"
-robotframework-pythonlibcore = "^3.0.0"
+robotframework-pythonlibcore = ">=3,<5"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^0.971"
