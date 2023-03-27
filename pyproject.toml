@@ -26,7 +26,7 @@ perflint = "^0.7.3"
 robotframework-requests = "^0.9.3"
 coverage = "^6.4.4"
 cosmic-ray = "^8.3.5"
-tox = "^3.25.1"
+tox = ">=3.25.1,<5.0.0"
 docutils = "^0.19"
 
 
