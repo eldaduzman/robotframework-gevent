@@ -14,7 +14,7 @@ keywords = ["robotframework", "rpa", "automation", "asynchronous"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-gevent = ">=21.12,<23.0"
+gevent = ">=21.12,<24.0"
 robotframework = ">=5.0.1,<7.0.0"
 robotframework-pythonlibcore = ">=3,<5"
 aiohttp = "^3.9.1"
