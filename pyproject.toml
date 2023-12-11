@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "robotframework-gevent"
-version = "0.5.1"
+version = "0.6.0"
 description = "Run keywords asynchronously with the power of gevent"
 authors = ["Eldad Uzman <eldadu1985@gmail.com>"]
 license = "MIT"
@@ -17,6 +17,7 @@ python = "^3.8"
 gevent = ">=21.12,<23.0"
 robotframework = ">=5.0.1,<7.0.0"
 robotframework-pythonlibcore = ">=3,<5"
+aiohttp = "^3.9.1"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^0.971"
