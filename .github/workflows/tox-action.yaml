@@ -11,8 +11,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        python_version: [3.8,3.9,3.10.x]
-        rbf_version: [5.0.1,6.0,6.0.1]
+        python_version: [3.8,3.9,3.10.x,3.11.x]
+        rbf_version: [5.0.1,6.0,6.0.1,6.1.1]
 
     steps:
       - uses: actions/checkout@v3
