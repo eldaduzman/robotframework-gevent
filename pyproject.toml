@@ -29,6 +29,8 @@ coverage = "^6.4.4"
 cosmic-ray = "^8.3.5"
 tox = "^3.25.1"
 docutils = "^0.19"
+robotframework-sshlibrary = "^3.8.0"
+robotframework-seleniumlibrary = "^6.2.0"
 
 
 [build-system]

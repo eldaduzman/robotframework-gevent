@@ -25,7 +25,9 @@ SOFTWARE.
 # pylint: disable=wrong-import-order
 from gevent import monkey
 
+
 monkey.patch_all(thread=False)
+
 from typing import Any, List
 
 from robotlibcore import DynamicCore  # type: ignore
@@ -69,6 +71,8 @@ class GeventLibrary(DynamicCore):
     ROBOT_LIBRARY_SCOPE = "Global"
     # ROBOT_LISTENER_API_VERSION = 2
 
-    def __init__(self):
+    def __init__(self, patch_threads: bool = False):
         # self.ROBOT_LIBRARY_LISTENER = self # currently a listener is not needed...
         DynamicCore.__init__(self, GeventLibrary.libraries)
+        if patch_threads:
+            monkey.patch_thread()
