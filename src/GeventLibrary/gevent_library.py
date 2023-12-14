@@ -43,11 +43,11 @@ class GeventLibrary(DynamicCore):
     Each keywords gets its own greenlet so that they are executed to completion.
 
 
-    | *** Settings ***
+    | **** Settings ****
     | Library             GeventLibrary
     |
     |
-    | *** Test Cases ***
+    | **** Test Cases ****
     | Test1
     |     Log    Hello World
     |     Create Gevent Bundle    alias=alias1
@@ -58,9 +58,9 @@ class GeventLibrary(DynamicCore):
 
     == Calling concurrent keywords ==
     === Multiprocessing ===
-    Multiprocessing containing code will not result in error, but waiting for process to end is blocking and the event loop will be hanging
+    Multiprocessing containing code will not result in error, but waiting for processes to end is blocking and the event loop will be hanging
     === Multithreading ===
-    Multithreading containing code will not result in error, but waiting for process to end is blocking and the event loop will be hanging
+    Multithreading containing code will not result in error, but waiting for threads to end is blocking and the event loop will be hanging
     === gevent ===
     gevent containing code will work properly in a bundle and will be concurrent to the other coroutines.
     === asyncio ===
@@ -72,6 +72,11 @@ class GeventLibrary(DynamicCore):
     # ROBOT_LISTENER_API_VERSION = 2
 
     def __init__(self, patch_threads: bool = False):
+        """
+
+        Args:
+            patch_threads (bool, optional): This is an experimental flag to solve the issue with robotframework SSH library. see - https://github.com/eldaduzman/robotframework-gevent/issues/94. Defaults to False.
+        """
         # self.ROBOT_LIBRARY_LISTENER = self # currently a listener is not needed...
         DynamicCore.__init__(self, GeventLibrary.libraries)
         if patch_threads:
