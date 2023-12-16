@@ -9,6 +9,7 @@ from GeventLibrary.exceptions import (
     BundleHasNoCoroutines,
 )
 from GeventLibrary.keywords.gevent_keywords import GeventKeywords
+from GeventLibrary.gevent_library import GeventLibrary 
 
 
 class TestInstanceCreation(TestCase):
@@ -19,6 +20,12 @@ class TestInstanceCreation(TestCase):
         it should have no bundle of coroutines"""
         gevent_library_instance = GeventKeywords()
         self.assertEqual(0, len(gevent_library_instance))
+
+    def test_instantiate_keywords_class_patch_threads(self):
+        """when a new keyword instance is created,
+        it should have no bundle of coroutines"""
+        gevent_library_instance = GeventLibrary(patch_threads=True)
+        print(gevent_library_instance)
 
     def test_create_empty_bundle_with_alias(self):
         """When we add a new bundle of coroutines, length should be increased to 1,
