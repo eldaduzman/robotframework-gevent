@@ -23,7 +23,8 @@ SOFTWARE.
 # genevt monkey patch should be placed at the top
 # pylint: disable=wrong-import-position
 # pylint: disable=wrong-import-order
-from gevent import monkey
+
+from gevent import monkey # mypy: disable
 
 
 monkey.patch_all(thread=False)
@@ -75,7 +76,8 @@ class GeventLibrary(DynamicCore):
         """
 
         Args:
-            patch_threads (bool, optional): This is an experimental flag to solve the issue with robotframework SSH library. see - https://github.com/eldaduzman/robotframework-gevent/issues/94. Defaults to False.
+            patch_threads (bool, optional): This is an experimental flag to solve the issue with robotframework SSH library.
+            see - https://github.com/eldaduzman/robotframework-gevent/issues/94. Defaults to False.
         """
         # self.ROBOT_LIBRARY_LISTENER = self # currently a listener is not needed...
         DynamicCore.__init__(self, GeventLibrary.libraries)
